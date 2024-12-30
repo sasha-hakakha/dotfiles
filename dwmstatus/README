@@ -1,0 +1,5 @@
+git clone git://git.suckless.org/dwmstatus
+cd dwmstatus
+make
+make PREFIX=/usr install
+# add »dwmstatus 2>&1 >/dev/null &« to your .xinitrc

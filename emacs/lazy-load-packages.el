@@ -1,0 +1,181 @@
+(require 'package)
+
+;;; Code:
+(eval-when-compile
+  ;; Ensure 'use-package' is installed
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package))
+
+;; NOT LAZY
+(use-package general
+  :ensure t
+  :demand t)
+
+(use-package exwm-modeline
+  :ensure t
+  :demand t)
+
+(use-package magit
+  :ensure t
+  :demand t)
+
+(use-package evil
+  :ensure t
+  :demand t
+  :init (setq evil-want-integration t)
+  :config (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :demand t
+  :config
+  (evil-collection-init))
+
+(use-package monokai-pro-theme
+  :ensure t
+  :demand t)
+
+(use-package doom-modeline
+  :ensure t
+  :demand t
+  :init (doom-modeline-mode 1))
+
+(use-package vertico
+  :ensure t
+  :init (vertico-mode))
+
+(use-package projectile
+  :ensure t
+  :init (projectile-mode +1))
+
+(use-package counsel-projectile
+  :ensure t
+  :after (counsel projectile))
+
+(use-package ibuffer-projectile
+  :ensure t
+  :after projectile)
+
+(use-package evil-snipe
+  :ensure t
+  :after evil)
+
+(use-package evil-easymotion
+  :ensure t
+  :after evil)
+
+(use-package company
+  :ensure t
+  :after evil)
+
+(use-package buffer-move
+  :ensure t
+  :demand t)
+
+;; LAZY
+
+(use-package haskell-mode
+  :ensure t
+  :defer t)
+
+(use-package flycheck-haskell
+  :ensure t
+  :defer t)
+
+(use-package php-mode
+  :ensure t
+  :defer t)
+  
+(use-package helm
+  :ensure t
+  :defer t
+  :commands helm-M-x)
+
+(use-package eglot
+  :ensure t
+  :commands eglot)
+
+(use-package typescript-mode
+  :ensure t
+  :defer t)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package ccls
+  :ensure t
+  :commands ccls-initialize)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package yasnippet
+  :ensure t
+  :commands yas-global-mode
+  :config (yas-global-mode 1))
+
+(use-package ivy
+  :ensure t
+  :init (ivy-mode 1))
+
+(use-package counsel
+  :ensure t
+  :after ivy
+  :bind (("M-x" . counsel-M-x))
+  :config (counsel-mode 1))
+
+(use-package which-key
+  :ensure t
+  :init (which-key-mode))
+
+(use-package web-mode
+  :ensure t
+  :mode "\\.html?\\'")
+
+(use-package json-reformat
+  :ensure t
+  :commands json-reformat-region)
+
+(use-package vterm
+  :ensure t
+  :commands vterm)
+
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'")
+
+(use-package helpful
+  :ensure t
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)))
+
+;; (use-package smartparens
+;;   :ensure t
+;;   :hook (prog-mode . smartparens-mode))
+
+(use-package undo-tree
+  :ensure t
+  :init (global-undo-tree-mode 1))
+
+(use-package evil-lion
+  :ensure t
+  :after evil
+  :config (evil-lion-mode))
+
+(use-package org-gcal
+  :ensure t
+  :defer t)
+
+(use-package editorconfig
+  :ensure t
+  :config (editorconfig-mode 1))
+
+(use-package lua-mode
+  :ensure t
+  :defer t)
