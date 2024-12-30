@@ -38,10 +38,15 @@
   :ensure t
   :demand t)
 
-(use-package doom-modeline
+(use-package beacon
   :ensure t
   :demand t
-  :init (doom-modeline-mode 1))
+  :init (beacon-mode 1))
+
+(use-package telephone-line
+  :ensure t
+  :demand t
+  :init (telephone-line-mode 1))
 
 (use-package vertico
   :ensure t
