@@ -1,1 +1,5 @@
-* TODO make telephone line less red
+* TODO telephone-line
+** TODO make telephone line less red
+** TODO move telephone-line stuff out of lazy-load-packages.el
+* TODO more reasearch + bindings for counsel-projectile 
+* TODO research org-mode
