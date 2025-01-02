@@ -79,8 +79,9 @@
 (evil-define-key 'normal global-map (kbd "SPC B") 'balance-windows)
 (evil-define-key 'normal global-map (kbd "SPC o") 'delete-other-windows)
 
-(evil-define-key 'normal global-map (kbd "SPC r ")  'counsel-projectile-rg)
-(evil-define-key 'normal global-map (kbd "SPC f")  'counsel-projectile-find-file)
+(evil-define-key 'normal global-map (kbd "SPC f r")  'counsel-projectile-rg)
+(evil-define-key 'normal global-map (kbd "SPC f f")  'counsel-projectile-find-file)
+(evil-define-key 'normal global-map (kbd "SPC f p")  'counsel-projectile-switch-project)
 (evil-define-key 'normal global-map (kbd "SPC \;") 'helm-mini)
 (evil-define-key 'normal global-map (kbd "SPC l") 'display-line-numbers-mode)
 
@@ -95,13 +96,15 @@
   (evil-define-key 'normal global-map (kbd "SPC m r f") 'tide-rename-file)
   (evil-define-key 'normal global-map (kbd "SPC m f") 'tide-format))
 
-(evil-define-key 'normal global-map (kbd "SPC c p")  'counsel-projectile-switch-project)
 
 (evil-define-key 'normal global-map (kbd "SPC R")  'open-repos)
 
 (evil-define-key 'normal global-map (kbd "SPC F")  'toggle-frame-fullscreen)
 
 (evil-define-key 'normal global-map (kbd "SPC B")  'big-file)
+
+(evil-define-key 'normal global-map (kbd "SPC r")  'rename-buffer)
+
 
 ;; non-evil bindings
 (global-set-key (kbd "M-x") 'counsel-M-x)
