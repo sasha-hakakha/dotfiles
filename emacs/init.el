@@ -1,4 +1,6 @@
-(setq evil-want-keybinding nil) (setq debug-on-error t) (require 'package)
+(setq evil-want-keybinding nil)
+(setq debug-on-error nil)
+(require 'package)
    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;;    (add-to-list 'package-archives
 ;;    '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
