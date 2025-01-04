@@ -94,20 +94,20 @@
 
 ;; haskell
 
-(add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook
-          (lambda ()
-            (set (make-local-variable 'company-backends)
-                 (append '((company-capf company-dabbrev-code))
-                         company-backends))))
-(with-eval-after-load 'flycheck
-  (flycheck-add-next-checker 'haskell-ghc 'haskell-hlint)
-  (flycheck-add-mode 'haskell-stack-ghc 'haskell-mode)
-  (flycheck-add-mode 'haskell-ghc 'haskell-mode))
+;; (add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
+;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;; (add-hook 'haskell-mode-hook
+;;           (lambda ()
+;;             (set (make-local-variable 'company-backends)
+;;                  (append '((company-capf company-dabbrev-code))
+;;                          company-backends))))
+;; (with-eval-after-load 'flycheck
+;;   (flycheck-add-next-checker 'haskell-ghc 'haskell-hlint)
+;;   (flycheck-add-mode 'haskell-stack-ghc 'haskell-mode)
+;;   (flycheck-add-mode 'haskell-ghc 'haskell-mode))
 
-;; Company
-(add-hook 'after-init-hook 'global-company-mode)
+;; ;; Company
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Ivy
 (require 'counsel)

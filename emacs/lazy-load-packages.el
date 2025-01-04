@@ -72,9 +72,14 @@
   :ensure t
   :after evil)
 
-(use-package company
+(use-package corfu
   :ensure t
-  :after evil)
+  :init
+  (global-corfu-mode)
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay 0.01) 
+  (corfu-echo-documentation nil))
 
 (use-package buffer-move
   :ensure t
