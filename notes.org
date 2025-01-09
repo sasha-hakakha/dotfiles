@@ -3,3 +3,5 @@
 ** TODO move telephone-line stuff out of lazy-load-packages.el
 * TODO more reasearch + bindings for counsel-projectile 
 * TODO research org-mode
+
+* TODO finish setting up corfu
