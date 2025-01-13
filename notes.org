@@ -5,3 +5,5 @@
 * TODO research org-mode
 
 * TODO finish setting up corfu
+
+* TODO function to cycle through buffers of same program

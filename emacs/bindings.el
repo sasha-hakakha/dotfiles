@@ -1,52 +1,26 @@
-;; movement
-(defun evil-window-split-and-switch ()
-  "Split the window vertically and switch to the new buffer."
-  (interactive)
-  (evil-window-split)
-  (other-window 1))
+;;; bindings.el --- bindings
 
-(defun evil-window-vsplit-and-switch ()
-  "Split the window horizontally and switch to the new buffer."
-  (interactive)
-  (evil-window-vsplit)
-  (other-window 1))
+;;; Commentary:
+;; I shoudl organize this more
+
+;;; Code:
+
+(load-file "~/.emacs.d/custom-functions.el")
+
+;; movement
 
 
 
 ;; Define functions for non-Evil key bindings
-(defun window-split-and-switch ()
-  (interactive)
-  (split-window-below)
-  (other-window 1))
-
-(defun window-vsplit-and-switch ()
-  (interactive)
-  (split-window-right)
-  (other-window 1))
 
 ;; Non-Evil keybinding
 
-(defun equalize-buffer-sizes ()
-  "Makes all open buffers the same size."
-  (interactive)
-  (let ((buffers (buffer-list))
-        (num-buffers (count-windows)))
-    (delete-other-windows)
-    (dotimes (i num-buffers)
-      (split-window-horizontally))
-    (balance-windows)))
 
 (evil-define-key 'normal global-map (kbd "SPC SPC e") 'equalize-buffer-sizes)
 
-(defun kill-all-vterm-buffers ()
-  "Kill all vterm buffers."
-  (interactive)
-  (dolist (buf (buffer-list))
-    (when (eq 'vterm-mode (buffer-local-value 'major-mode buf))
-      (kill-buffer buf))))
 
-(evil-define-key 'normal global-map (kbd "SPC p") 'kill-all-vterm-buffers)
-(global-set-key (kbd "C-c k") 'kill-all-vterm-buffers)
+;; the x stands for execute :3
+(evil-define-key 'normal global-map (kbd "SPC x v") 'kill-all-vterm-buffers)
 
 
 ;;; ; eVIl bindings
@@ -106,6 +80,7 @@
 (evil-define-key 'normal global-map (kbd "SPC r")  'rename-buffer)
 
 
+
 ;; non-evil bindings
 (global-set-key (kbd "M-x") 'counsel-M-x)
 
@@ -118,6 +93,7 @@
 (global-set-key (kbd "C-c \;") 'helm-mini)
 (global-set-key (kbd "C-c i") 'ibuffer)
 (global-set-key (kbd "C-c q") 'kill-buffer)
+(global-set-key (kbd "C-c k") 'kill-all-vterm-buffers)
 
 (global-set-key (kbd "M-J") 'window-split-and-switch)
 (global-set-key (kbd "M-K") 'window-split-and-switch)
@@ -140,3 +116,5 @@
 ;; exwm
 (define-key exwm-mode-map (kbd "C-SPC") 'exwm-input-send-next-key)
 (provide 'bindings)
+
+;;; bindings.el ends here
