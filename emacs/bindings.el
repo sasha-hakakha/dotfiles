@@ -42,10 +42,10 @@
 (evil-define-key 'normal global-map (kbd "M-l") 'evil-window-right)
 
 
-(evil-define-key 'normal global-map (kbd "s-l") (lambda () (interactive) (enlarge-window-horizontally 2)))
-(evil-define-key 'normal global-map (kbd "s-h") (lambda () (interactive) (shrink-window-horizontally 2)))
-(evil-define-key 'normal global-map (kbd "s-j") (lambda () (interactive) (enlarge-window 2)))
-(evil-define-key 'normal global-map (kbd "s-k") (lambda () (interactive) (shrink-window 2)))
+(evil-define-key 'normal global-map (kbd "s-l") (lambda () (interactive) (enlarge-window-horizontally 5)))
+(evil-define-key 'normal global-map (kbd "s-h") (lambda () (interactive) (shrink-window-horizontally 5)))
+(evil-define-key 'normal global-map (kbd "s-j") (lambda () (interactive) (enlarge-window 5)))
+(evil-define-key 'normal global-map (kbd "s-k") (lambda () (interactive) (shrink-window 5)))
 
 (evil-define-key 'normal global-map (kbd "SPC s ") 'save-buffer)
 (evil-define-key 'normal global-map (kbd "SPC q") 'delete-window)
