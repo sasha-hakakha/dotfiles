@@ -79,6 +79,7 @@
 
 (evil-define-key 'normal global-map (kbd "SPC r")  'rename-buffer)
 
+(evil-define-key 'insert global-map (kbd "C-y") 'yank)
 
 
 ;; non-evil bindings

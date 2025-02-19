@@ -81,6 +81,13 @@
   (corfu-auto-delay 0.01) 
   (corfu-echo-documentation nil))
 
+(use-package corfu-terminal
+  :ensure t
+  :init
+  (corfu-terminal-mode 1)
+  :custom
+  (corfu-terminal-disable-on-gui nil))
+
 (use-package buffer-move
   :ensure t
   :demand t)

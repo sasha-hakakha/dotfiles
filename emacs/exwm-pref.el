@@ -4,18 +4,29 @@
 (require 'exwm-randr)
 
 (setq exwm-workspace-show-all-buffers t)
+(setq exwm-randr-workspace-monitor-plist '(0 "eDP" 1 "HDMI-A-0"))
 (setq exwm-layout-show-all-buffers t)
+(setq exwm-workspace-number 2)
 
 (require 'exwm-modeline)
 (setq exwm-modeline-randr t)
 (setq exwm-modeline-short nil)
 (setq exwm-modeline-urgent t)
 (add-hook 'exwm-init-hook 'exwm-modeline-mode)
-
+(add-hook 'exwm-randr-screen-change-hook
+           (lambda ()
+             (let ((connected (shell-command-to-string "xrandr")))
+               (if (and (string-match "HDMI-0 connected" connected) (string-match "DP-0 connected" connected) (string-match "DVI-I-1 connected" connected))
+                   (start-process-shell-command
+                    "xrandr" nil "xrandr --output HDMI-0 --rotate right --pos 0x240 --output DP-0 --auto --pos 1080x0 --output DVI-I-1 --auto --pos 1080x1080")
+                 ;;else
+                 (start-process-shell-command
+                  "xrandr" nil "xrandr --output DP-0 --auto --primary --output HDMI-0 --auto")))
+             (exwm-randr-refresh)))
 ;; (require exwm-firefox-evil)
 ;; (require 'exwm-firefox)
 ;; (exwm-firefox-mode)
-
+(exwm-randr-mode)
 (setq persp-auto-resume-time 0)
 
 (setq exwm-title-length 70)
