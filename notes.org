@@ -1,9 +1,4 @@
-* TODO telephone-line
-** TODO make telephone line less red
-** TODO move telephone-line stuff out of lazy-load-packages.el
 * TODO more reasearch + bindings for counsel-projectile 
-* TODO research org-mode
-
-* TODO finish setting up corfu
-
+* TODO finish customizing corfu
 * TODO function to cycle through buffers of same program
+* TODO customize erc

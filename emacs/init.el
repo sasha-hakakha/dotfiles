@@ -116,7 +116,7 @@
 (setq undo-tree-auto-save-history nil)
 
 ;; erc
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+;; (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 ;; custom set vars
 (custom-set-variables
