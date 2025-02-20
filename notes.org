@@ -1,5 +1,6 @@
 * TODO more reasearch + bindings for counsel-projectile 
 * TODO finish customizing corfu
 * TODO function to cycle through buffers of same program
-* TODO customize erc
 * TODO binding for toggle comment region
+* TODO better firefox tab persistence
+* TODO binding for swap the two open buffers

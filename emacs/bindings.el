@@ -78,6 +78,7 @@
 (evil-define-key 'normal global-map (kbd "SPC B")  'big-file)
 
 (evil-define-key 'normal global-map (kbd "SPC r")  'rename-buffer)
+(evil-define-key 'normal global-map (kbd "SPC e")  'eshell)
 
 (evil-define-key 'insert global-map (kbd "C-y") 'yank)
 
@@ -95,6 +96,8 @@
 (global-set-key (kbd "C-c i") 'ibuffer)
 (global-set-key (kbd "C-c q") 'kill-buffer)
 (global-set-key (kbd "C-c k") 'kill-all-vterm-buffers)
+(global-set-key (kbd "C-c e") 'login-to-libera)
+(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 
 (global-set-key (kbd "M-J") 'window-split-and-switch)
 (global-set-key (kbd "M-K") 'window-split-and-switch)

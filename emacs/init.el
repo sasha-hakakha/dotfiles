@@ -14,6 +14,7 @@
 (load-file "~/.emacs.d/bindings.el")
 (load-file "~/.emacs.d/exwm-pref.el")
 (load-file "~/.emacs.d/custom-functions.el")
+(load-file "~/.emacs.d/irc.el")
 
 (load-theme 'monokai-pro-spectrum t)
 (require 'rainbow-delimiters)
@@ -114,9 +115,6 @@
 (setq make-backup-files nil)
 ;;misc
 (setq undo-tree-auto-save-history nil)
-
-;; erc
-;; (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 ;; custom set vars
 (custom-set-variables
