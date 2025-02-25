@@ -3,6 +3,8 @@
 (require 'exwm)
 (require 'exwm-randr)
 
+(load-file "~/.emacs.d/custom-functions.el")
+
 (setq exwm-workspace-show-all-buffers t)
 (setq exwm-randr-workspace-monitor-plist '(0 "eDP" 1 "HDMI-A-0"))
 (setq exwm-layout-show-all-buffers t)
@@ -119,6 +121,22 @@
 ;; Here are a few examples:
 (setq exwm-input-global-keys
       `(
+	;; buffer movement and creation
+	([?\M-J] . evil-window-split-and-switch)
+	([?\M-K] . evil-window-split-and-switch)
+	([?\M-H] . evil-window-vsplit-and-switch)
+	([?\M-L] . evil-window-vsplit-and-switch)
+
+	([?\M-h] . evil-window-left)
+	([?\M-j] . evil-window-down)
+	([?\M-k] . evil-window-up)
+	([?\M-l] . evil-window-right)
+
+	([M-left] . buf-move-left)
+	([M-right] . buf-move-right)
+	([M-up] . buf-move-up)
+	([M-down] . buf-move-down)
+
         ;; Bind "s-r" to exit char-mode and fullscreen mode.
         ([?\s-r] . exwm-reset)
         ;; Bind "s-w" to window switcher

@@ -12,7 +12,15 @@
       erc-nick "k0zy"
       erc-use-auth-source-for-nickserv-password t
       erc-autojoin-channels-alist '(("libera.chat"
-                                     "#emacs" "#emacs-social" "#linux" "#archlinux" "#haskell" "#invidious" "networking" "security"))
+                                     "#emacs"
+				     "#emacs-social"
+				     "#linux"
+				     "#archlinux"
+				     "#haskell"
+				     "#invidious"
+				     "networking"
+				     "evil-mode"
+				     "security"))
 
       erc-hide-list '("JOIN" "PART" "QUIT")
       erc-current-nick-highlight-type 'nick
@@ -22,7 +30,7 @@
       erc-track-faces-priority-list '(erc-current-nick-face erc-keyword-face)
       erc-track-priority-faces-only 'all)
 
-(defun start-erc ()
+(defun start-libera-erc ()
   "Start erc and autojoin various channels"
   (interactive)
   (erc :server "irc.libera.chat" :port 6667))

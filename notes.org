@@ -1,6 +1,15 @@
+* TODO !!!!!! binding to violently kill the minibuffer
+* TODO dabbrev with corfu
+
+
 * TODO more reasearch + bindings for counsel-projectile 
+* TODO tree style tabs
+* TODO org color pallett
+* TODO  project-eshell C-x p e
+
 * TODO finish customizing corfu
 * TODO function to cycle through buffers of same program
-* TODO binding for toggle comment region
 * TODO better firefox tab persistence
 * TODO binding for swap the two open buffers
+
+* TODO make cheatsheet for large vim movement bindings
