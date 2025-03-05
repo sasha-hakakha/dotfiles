@@ -2,12 +2,12 @@
 
 
 * TODO more reasearch + bindings for counsel-projectile 
-* TODO tree style tabs
-* TODO org color pallett
-* TODO  project-eshell C-x p e
+* TODO custom theme
+* TODO project-eshell C-x p e
 
 * TODO finish customizing corfu
 * TODO function to cycle through buffers of same program
 * TODO better firefox tab persistence
 
 * TODO make cheatsheet for large vim movement bindings
+* TODO vim binding for erase char and insertA

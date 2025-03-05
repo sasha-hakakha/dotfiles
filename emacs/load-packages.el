@@ -92,6 +92,11 @@
   :ensure t
   :demand t)
 
+(use-package dabbrev
+  :bind (("M-/" . dabbrev-completion)
+         ("C-M-/" . dabbrev-expand))
+  :config
+  (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
 ;; LAZY
 
 (use-package haskell-mode
