@@ -10,4 +10,8 @@
 * TODO better firefox tab persistence
 
 * TODO make cheatsheet for large vim movement bindings
-* TODO vim binding for erase char and insertA
+* TODO exwm vterm binding
+
+* TODO vim move to beginning/end of line while in insert mode
+
+* TODO fix goddamn org mode
