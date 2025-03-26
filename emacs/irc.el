@@ -13,14 +13,10 @@
       erc-use-auth-source-for-nickserv-password t
       erc-autojoin-channels-alist '(("libera.chat"
                                      "#emacs"
-				     "#emacs-social"
 				     "#linux"
 				     "#archlinux"
 				     "#haskell"
-				     "#invidious"
-				     "networking"
-				     "evil-mode"
-				     "security"))
+				     "#security"))
 
       erc-hide-list '("JOIN" "PART" "QUIT")
       erc-current-nick-highlight-type 'nick

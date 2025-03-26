@@ -1,5 +1,12 @@
-(setq evil-want-keybinding nil)
+;;; init.el --- init file                            -*- lexical-binding: t; -*-
+
+;; Author: me :3
+
+;;; Commentary:
+;;; Code:
+
 (setq debug-on-error nil)
+(setq evil-want-keybinding nil)
 (require 'package)
    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;;    (add-to-list 'package-archives
@@ -18,6 +25,7 @@
 (load-file "~/.emacs.d/abbrevs.el")
 
 (load-theme 'monokai-pro-spectrum t)
+(load-theme 'flatland t)
 (require 'rainbow-delimiters)
 
 (custom-set-faces
@@ -154,7 +162,7 @@
      default))
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(beacon buffer-move ccls corfu-terminal counsel-projectile
+   '(beacon buffer-move ccls company corfu-terminal counsel-projectile
 	    evil-collection evil-easymotion evil-lion evil-snipe
 	    exwm-modeline flycheck-haskell free-keys general helm
 	    helpful ibuffer-projectile json-reformat lua-mode magit
@@ -162,4 +170,4 @@
 	    rust-mode telephone-line typescript-mode undo-tree vertico
 	    vterm web-mode yasnippet)))
 
-
+;;; init.el ends here

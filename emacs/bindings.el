@@ -15,6 +15,9 @@
 
 ;; Non-Evil keybinding
 
+(evil-define-key 'normal vterm-mode-map (kbd "M-d") (lambda (command)
+							(interactive (list (read-shell-command "$ ")))
+							(start-process-shell-command command nil command)))
 
 (evil-define-key 'normal global-map (kbd "SPC SPC e") 'equalize-buffer-sizes)
 
