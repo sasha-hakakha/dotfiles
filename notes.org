@@ -1,17 +1,7 @@
-* TODO dabbrev with corfu
-
-
-* TODO more reasearch + bindings for counsel-projectile 
-* TODO custom theme
+* TODO movement bindings for org mode
+* TODO more research + bindings for counsel-projectile 
 * TODO project-eshell C-x p e
-
 * TODO finish customizing corfu
 * TODO function to cycle through buffers of same program
-* TODO better firefox tab persistence
-
-* TODO make cheatsheet for large vim movement bindings
-* TODO exwm vterm binding
-
 * TODO vim move to beginning/end of line while in insert mode
-
-* TODO fix goddamn org mode
+* TODO function that moves to (most recent) firefox buffer, and if there isn't one spawn one

@@ -96,6 +96,9 @@
 ;; Ivy
 (require 'counsel)
 
+;; org-mode
+(add-hook 'org-mode-hook (lambda () (corfu-mode -1)))
+
 
 ;; auto-save
 (setq auto-save-default nil)
