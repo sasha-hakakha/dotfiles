@@ -76,22 +76,11 @@
 ;; C
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode))
 
-;; haskell
+;; python
+(eval-after-load "company"
+ '(add-to-list 'company-backends 'company-anaconda))
+(add-hook 'python-mode-hook 'anaconda-mode)
 
-;; (add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
-;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-;; (add-hook 'haskell-mode-hook
-;;           (lambda ()
-;;             (set (make-local-variable 'company-backends)
-;;                  (append '((company-capf company-dabbrev-code))
-;;                          company-backends))))
-;; (with-eval-after-load 'flycheck
-;;   (flycheck-add-next-checker 'haskell-ghc 'haskell-hlint)
-;;   (flycheck-add-mode 'haskell-stack-ghc 'haskell-mode)
-;;   (flycheck-add-mode 'haskell-ghc 'haskell-mode))
-
-;; ;; Company
-;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Ivy
 (require 'counsel)
@@ -99,6 +88,8 @@
 ;; org-mode
 (add-hook 'org-mode-hook (lambda () (corfu-mode -1)))
 
+;; corfu / auto completion
+(setq text-mode-ispell-word-completion nil)
 
 ;; auto-save
 (setq auto-save-default nil)
@@ -165,12 +156,13 @@
      default))
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(beacon buffer-move ccls company corfu-terminal counsel-projectile
-	    evil-collection evil-easymotion evil-lion evil-snipe
-	    exwm-modeline flycheck-haskell free-keys general helm
-	    helpful ibuffer-projectile json-reformat lua-mode magit
-	    monokai-pro-theme org-gcal php-mode rainbow-delimiters
-	    rust-mode telephone-line typescript-mode undo-tree vertico
-	    vterm web-mode yasnippet)))
+   '(beacon buffer-move ccls company company-anaconda corfu-terminal
+	    counsel-projectile evil-collection evil-easymotion
+	    evil-lion evil-snipe exwm-modeline flycheck-haskell
+	    free-keys general helm helpful ibuffer-projectile
+	    json-reformat lua-mode magit monokai-pro-theme org-gcal
+	    php-mode python-black rainbow-delimiters rust-mode smudge
+	    telephone-line typescript-mode undo-tree vertico vterm
+	    web-mode yasnippet)))
 
 ;;; init.el ends here

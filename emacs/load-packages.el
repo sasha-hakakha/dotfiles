@@ -99,6 +99,27 @@
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
 ;; LAZY
 
+(use-package python-black
+  :ensure t
+  :defer t)
+
+(use-package company-anaconda
+  :ensure t
+  :defer t)
+
+(when (file-exists-p "~/.emacs.d/.env.el")
+  (load "~/.emacs.d/.env.el")
+    (use-package smudge
+    :bind-keymap ("C-c ." . smudge-command-map)
+    :custom
+    (smudge-oauth2-client-secret "...")
+    (smudge-oauth2-client-id "...")
+    ;; optional: enable transient map for frequent commands
+    (smudge-player-use-transient-map t)
+    :config
+    ;; optional: display current song in mode line
+    (global-smudge-remote-mode)))
+
 (use-package haskell-mode
   :ensure t
   :defer t)
