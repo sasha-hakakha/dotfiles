@@ -17,6 +17,12 @@
 
 (evil-define-key 'normal global-map (kbd "t") 'evil-substitute)
 
+(evil-define-key 'normal 'global
+  (kbd "Y")
+  (lambda ()
+    (interactive)
+    (evil-yank (point) (line-end-position))))
+
 (require 'evil-snipe)
 (evil-snipe-mode +1)
 (evil-snipe-override-mode +1)
