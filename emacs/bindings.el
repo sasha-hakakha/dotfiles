@@ -85,6 +85,8 @@
 
 (evil-define-key 'insert global-map (kbd "C-y") 'yank)
 
+(evil-define-key 'insert global-map (kbd "<print>") (lambda () (interactive)
+		     (start-process-shell-command "flameshot" nil "flameshot gui")))
 
 ;; non-evil bindings
 (global-set-key (kbd "M-x") 'counsel-M-x)

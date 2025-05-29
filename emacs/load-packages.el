@@ -72,14 +72,14 @@
   :ensure t
   :after evil)
 
-(use-package corfu
-  :ensure t
-  :init
-  (global-corfu-mode)
-  :custom
-  (corfu-auto t)
-  (corfu-auto-delay 0.01) 
-  (corfu-echo-documentation nil))
+;; (use-package corfu
+;;   :ensure t
+;;   :init
+;;   (global-corfu-mode)
+;;   :custom
+;;   (corfu-auto t)
+;;   (corfu-auto-delay 0.01) 
+;;   (corfu-echo-documentation nil))
 
 (use-package corfu-terminal
   :ensure t
@@ -101,11 +101,49 @@
 
 (use-package python-black
   :ensure t
-  :defer t)
+  :after python-mode)
+
+(use-package python-docstring
+  :ensure t
+  :after python-mode)
+
+(use-package anaconda-mode
+  :ensure t
+  :after python-mode)
+
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'"
+  :hook ((rust-mode . eglot-ensure)
+         (rust-mode . company-mode)
+         (rust-mode . flycheck-mode))
+  :config
+  (setq rust-format-on-save t)) ; optional, formats code on save
+
+(use-package eglot
+  :ensure t
+  :commands eglot
+  :config
+  (add-to-list 'eglot-server-programs
+               '(rust-mode . ("rust-analyzer"))))
+
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :commands lsp lsp-deferred
+;;   :config
+;;   ;; Use rust-analyzer as the backend
+;;   (setq lsp-rust-server 'rust-analyzer))
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package company
+  :ensure t
+  :init (global-company-mode))
 
 (use-package company-anaconda
-  :ensure t
-  :defer t)
+  :hook (python-mode . python-docstring-mode))
 
 (when (file-exists-p "~/.emacs.d/.env.el")
   (load "~/.emacs.d/.env.el")
@@ -128,6 +166,10 @@
   :ensure t
   :defer t)
 
+(use-package racket-mode
+  :ensure t
+  :defer t)
+
 (use-package php-mode
   :ensure t
   :defer t)
@@ -137,17 +179,13 @@
   :defer t
   :commands helm-M-x)
 
-(use-package eglot
-  :ensure t
-  :commands eglot)
+;; (use-package eglot
+;;   :ensure t
+;;   :commands eglot)
 
 (use-package typescript-mode
   :ensure t
   :defer t)
-
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
 
 (use-package ccls
   :ensure t

@@ -14,7 +14,21 @@
    (require 'package)
    (add-to-list 'package-archives
 		'("Melpa" . "https://melpa.org/packages/") t)
-;;; Code:
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 (load "~/.emacs.d/load-packages.el")
 (load-file "~/.emacs.d/evil-config.el")
@@ -33,7 +47,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "black" :family "mononoki" :height 120))))
+ '(default ((t (:background "black" :family "Source Code Pro" :height 120))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "magenta" :inherit rainbow-delimiters-base-face)))))
 
 ;; Appearence
@@ -80,8 +94,10 @@
 (eval-after-load "company"
  '(add-to-list 'company-backends 'company-anaconda))
 (add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'company-mode)
+(setq python-docstring-style 'google)
 
-
+(global-company-mode)
 ;; Ivy
 (require 'counsel)
 
@@ -93,6 +109,14 @@
 
 ;; auto-save
 (setq auto-save-default nil)
+
+;; eglot/lsp
+(straight-use-package
+ '(some-package :host github :repo "jdtsmith/eglot-booster"))
+
+(use-package eglot-booster
+	:after eglot
+	:config	(eglot-booster-mode))
 
 ;; 
 (use-package helpful
@@ -155,14 +179,6 @@
      "fb83a50c80de36f23aea5919e50e1bccd565ca5bb646af95729dc8c5f926cbf3"
      default))
  '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages
-   '(beacon buffer-move ccls company company-anaconda corfu-terminal
-	    counsel-projectile evil-collection evil-easymotion
-	    evil-lion evil-snipe exwm-modeline flycheck-haskell
-	    free-keys general helm helpful ibuffer-projectile
-	    json-reformat lua-mode magit monokai-pro-theme org-gcal
-	    php-mode python-black rainbow-delimiters rust-mode smudge
-	    telephone-line typescript-mode undo-tree vertico vterm
-	    web-mode yasnippet)))
+ '(package-selected-packages '(zzz-to-char)))
 
 ;;; init.el ends here

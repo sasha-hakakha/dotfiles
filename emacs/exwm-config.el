@@ -2,6 +2,7 @@
 ;; stuff for exwm
 (require 'exwm)
 (require 'exwm-randr)
+(require 'exwm-input)
 
 (load-file "~/.emacs.d/custom-functions.el")
 
@@ -137,6 +138,10 @@
 	([M-up] . buf-move-up)
 	([M-down] . buf-move-down)
 
+	([print] . (lambda () (interactive)
+		     (start-process-shell-command "flameshot" nil "flameshot gui")))
+
+	;;; not custom bindings below
         ;; Bind "s-r" to exit char-mode and fullscreen mode.
         ([?\s-r] . exwm-reset)
         ;; Bind "s-w" to window switcher
