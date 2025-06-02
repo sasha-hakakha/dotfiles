@@ -1,4 +1,5 @@
-* the corfu ispell error is making me lose my goddamn mind
+* TODO snipe should go to end of pair of chars, not beginning
+
 * TODO movement bindings for org mode
 * TODO more research + bindings for counsel-projectile 
 * TODO project-eshell C-x p e

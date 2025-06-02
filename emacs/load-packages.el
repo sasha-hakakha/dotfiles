@@ -125,7 +125,8 @@
   :commands eglot
   :config
   (add-to-list 'eglot-server-programs
-               '(rust-mode . ("rust-analyzer"))))
+               '(rust-mode . ("rust-analyzer"))
+	       '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))))
 
 ;; (use-package lsp-mode
 ;;   :ensure t

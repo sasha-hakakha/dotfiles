@@ -65,6 +65,7 @@
 (evil-define-key 'normal global-map (kbd "SPC h c") 'helpful-callable)
 (evil-define-key 'normal global-map (kbd "SPC h v") 'helpful-variable)
 (evil-define-key 'normal global-map (kbd "SPC h k") 'helpful-key)
+(evil-define-key 'normal global-map (kbd "SPC h f") 'helpful-function)
 (evil-define-key 'normal global-map (kbd "SPC h w") 'where-is)
 
 (with-eval-after-load 'tide

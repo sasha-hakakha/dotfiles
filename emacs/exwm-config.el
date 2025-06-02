@@ -3,6 +3,7 @@
 (require 'exwm)
 (require 'exwm-randr)
 (require 'exwm-input)
+(require 'exwm-manage)
 
 (load-file "~/.emacs.d/custom-functions.el")
 
@@ -10,6 +11,8 @@
 (setq exwm-randr-workspace-monitor-plist '(0 "eDP" 1 "HDMI-A-0"))
 (setq exwm-layout-show-all-buffers t)
 (setq exwm-workspace-number 2)
+
+(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 
 (require 'exwm-modeline)
 (setq exwm-modeline-randr t)
