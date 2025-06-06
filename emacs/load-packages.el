@@ -120,13 +120,31 @@
   :config
   (setq rust-format-on-save t)) ; optional, formats code on save
 
+(use-package python-mode
+  :ensure t
+  :mode "\\.py\\'"
+  :hook ((python-mode . eglot-ensure)
+         (python-mode . company-mode)
+         (python-mode . flycheck-mode)))
+
+;; (use-package eglot
+;;   :ensure t
+;;   :commands eglot
+;;   :config
+;;   (add-to-list 'eglot-server-programs
+;;                '(rust-mode . ("rust-analyzer"))
+;; 	       '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
+;; 	       '(python-mode . ("pylsp"))))
+	       
 (use-package eglot
   :ensure t
   :commands eglot
   :config
-  (add-to-list 'eglot-server-programs
-               '(rust-mode . ("rust-analyzer"))
-	       '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))))
+  (setq eglot-server-programs
+        '((rust-mode . ("rust-analyzer"))
+          (haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
+          (python-mode . ("pylsp")))))
+       
 
 ;; (use-package lsp-mode
 ;;   :ensure t
@@ -143,8 +161,8 @@
   :ensure t
   :init (global-company-mode))
 
-(use-package company-anaconda
-  :hook (python-mode . python-docstring-mode))
+;; (use-package company-anaconda
+;;   :hook (python-mode . python-docstring-mode))
 
 (when (file-exists-p "~/.emacs.d/.env.el")
   (load "~/.emacs.d/.env.el")

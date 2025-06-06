@@ -120,7 +120,9 @@
 (global-set-key (kbd "M-<up>") 'buf-move-up)
 (global-set-key (kbd "M-<down>") 'buf-move-down)
 
-
+(global-set-key (kbd "C-c y")
+		(lambda ()
+		  (interactive) (shell-command "setxkbmap -option \"caps:swapescape\"")))
 
 (global-set-key (kbd "M-RET") 'open-new-vterm)
 

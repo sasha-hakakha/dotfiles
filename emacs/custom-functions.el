@@ -44,6 +44,11 @@
     (when (eq 'vterm-mode (buffer-local-value 'major-mode buf))
       (kill-buffer buf))))
 
+(defun open-new-vterm ()
+  "Open a new instance of vterm."
+  (interactive)
+  (vterm (generate-new-buffer-name "*vterm*")))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here

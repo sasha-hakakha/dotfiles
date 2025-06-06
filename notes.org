@@ -1,3 +1,5 @@
+* TODO fix evil registers
+* TODO !! binding to do equivalent of either ci( or di{ but figures out which paren automatically?
 * TODO snipe should go to end of pair of chars, not beginning
 
 * TODO movement bindings for org mode

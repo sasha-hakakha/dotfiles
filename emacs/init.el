@@ -181,4 +181,5 @@
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages '(zzz-to-char)))
 
+(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here
