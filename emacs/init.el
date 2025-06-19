@@ -8,7 +8,8 @@
 (setq debug-on-error nil)
 (setq evil-want-keybinding nil)
 (require 'package)
-   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '( "jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 ;;    (add-to-list 'package-archives
 ;;    '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
    (require 'package)

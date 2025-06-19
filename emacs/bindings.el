@@ -105,6 +105,7 @@
 (global-set-key (kbd "C-c e") 'start-libera-erc)
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c d") 'abort-recursive-edit)
+(global-set-key (kbd "C-c v") #'evil-mode)
 
 (global-set-key (kbd "M-J") 'window-split-and-switch)
 (global-set-key (kbd "M-K") 'window-split-and-switch)

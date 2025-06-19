@@ -1,6 +1,6 @@
-* TODO fix evil registers
+* TODO binding to toggle evil!
 * TODO !! binding to do equivalent of either ci( or di{ but figures out which paren automatically?
-* TODO snipe should go to end of pair of chars, not beginning
+* TODO evil macro to delete up to first closing delimiter
 
 * TODO movement bindings for org mode
 * TODO more research + bindings for counsel-projectile 
@@ -9,3 +9,5 @@
 * TODO function to cycle through buffers of same program
 * TODO vim move to beginning/end of line while in insert mode
 * TODO function that moves to (most recent) firefox buffer, and if there isn't one spawn one
+
+* TODO chinese translate mode?
