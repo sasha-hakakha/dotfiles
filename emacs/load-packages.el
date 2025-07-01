@@ -97,7 +97,12 @@
          ("C-M-/" . dabbrev-expand))
   :config
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
+
 ;; LAZY
+
+(use-package elisp-format
+  :ensure t
+  :defer t)
 
 (use-package python-black
   :ensure t
@@ -127,15 +132,6 @@
          (python-mode . company-mode)
          (python-mode . flycheck-mode)))
 
-;; (use-package eglot
-;;   :ensure t
-;;   :commands eglot
-;;   :config
-;;   (add-to-list 'eglot-server-programs
-;;                '(rust-mode . ("rust-analyzer"))
-;; 	       '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
-;; 	       '(python-mode . ("pylsp"))))
-	       
 (use-package eglot
   :ensure t
   :commands eglot
@@ -146,13 +142,6 @@
           (python-mode . ("pylsp")))))
        
 
-;; (use-package lsp-mode
-;;   :ensure t
-;;   :commands lsp lsp-deferred
-;;   :config
-;;   ;; Use rust-analyzer as the backend
-;;   (setq lsp-rust-server 'rust-analyzer))
-
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
@@ -160,9 +149,6 @@
 (use-package company
   :ensure t
   :init (global-company-mode))
-
-;; (use-package company-anaconda
-;;   :hook (python-mode . python-docstring-mode))
 
 (when (file-exists-p "~/.emacs.d/.env.el")
   (load "~/.emacs.d/.env.el")
@@ -181,6 +167,11 @@
   :ensure t
   :defer t)
 
+(use-package dockerfile-mode
+  :ensure t
+  :defer t
+  :mode "\\Dockerfile\\'")
+
 (use-package flycheck-haskell
   :ensure t
   :defer t)
@@ -197,10 +188,6 @@
   :ensure t
   :defer t
   :commands helm-M-x)
-
-;; (use-package eglot
-;;   :ensure t
-;;   :commands eglot)
 
 (use-package typescript-mode
   :ensure t
@@ -255,9 +242,11 @@
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
 
-;; (use-package smartparens
-;;   :ensure t
-;;   :hook (prog-mode . smartparens-mode))
+(use-package smartparens
+  :ensure t
+  :hook (prog-mode . smartparens-mode)
+  :config
+  (require 'smartparens-config))
 
 (use-package undo-tree
   :ensure t
