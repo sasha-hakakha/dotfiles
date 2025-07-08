@@ -116,6 +116,11 @@
   :ensure t
   :defer t)
 
+(use-package dockerfile-mode
+  :ensure t
+  :defer t
+  :mode "\\Dockerfile\\'")
+
 (use-package flycheck-haskell
   :ensure t
   :defer t)
@@ -181,6 +186,12 @@
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
+
+(use-package smartparens
+  :ensure t
+  :hook (prog-mode . smartparens-mode)
+  :config
+  (require 'smartparens-config))
 
 (use-package undo-tree
   :ensure t
