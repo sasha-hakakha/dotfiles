@@ -60,7 +60,7 @@
 (evil-define-key 'normal global-map (kbd "SPC f f")  'counsel-projectile-find-file)
 (evil-define-key 'normal global-map (kbd "SPC f p")  'counsel-projectile-switch-project)
 (evil-define-key 'normal global-map (kbd "SPC \;") 'helm-mini)
-(evil-define-key 'normal global-map (kbd "SPC l") 'display-line-numbers-mode)
+(evil-define-key 'normal global-map (kbd "SPC L") 'display-line-numbers-mode)
 
 (evil-define-key 'normal global-map (kbd "SPC h c") 'helpful-callable)
 (evil-define-key 'normal global-map (kbd "SPC h v") 'helpful-variable)
@@ -88,6 +88,9 @@
 
 (evil-define-key 'insert global-map (kbd "<print>") (lambda () (interactive)
 		     (start-process-shell-command "flameshot" nil "flameshot gui")))
+
+;; (evil-define-key 'normal 'global (kbd ",)") 
+;;   (lambda () (interactive) (evil-execute-in-normal-state "dt)")))
 
 ;; non-evil bindings
 (global-set-key (kbd "M-x") 'counsel-M-x)

@@ -72,15 +72,6 @@
   :ensure t
   :after evil)
 
-;; (use-package corfu
-;;   :ensure t
-;;   :init
-;;   (global-corfu-mode)
-;;   :custom
-;;   (corfu-auto t)
-;;   (corfu-auto-delay 0.01) 
-;;   (corfu-echo-documentation nil))
-
 (use-package corfu-terminal
   :ensure t
   :init
@@ -97,61 +88,8 @@
          ("C-M-/" . dabbrev-expand))
   :config
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
+
 ;; LAZY
-
-(use-package python-black
-  :ensure t
-  :after python-mode)
-
-(use-package python-docstring
-  :ensure t
-  :after python-mode)
-
-(use-package anaconda-mode
-  :ensure t
-  :after python-mode)
-
-(use-package rust-mode
-  :ensure t
-  :mode "\\.rs\\'"
-  :hook ((rust-mode . eglot-ensure)
-         (rust-mode . company-mode)
-         (rust-mode . flycheck-mode))
-  :config
-  (setq rust-format-on-save t)) ; optional, formats code on save
-
-(use-package python-mode
-  :ensure t
-  :mode "\\.py\\'"
-  :hook ((python-mode . eglot-ensure)
-         (python-mode . company-mode)
-         (python-mode . flycheck-mode)))
-
-;; (use-package eglot
-;;   :ensure t
-;;   :commands eglot
-;;   :config
-;;   (add-to-list 'eglot-server-programs
-;;                '(rust-mode . ("rust-analyzer"))
-;; 	       '(haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
-;; 	       '(python-mode . ("pylsp"))))
-	       
-(use-package eglot
-  :ensure t
-  :commands eglot
-  :config
-  (setq eglot-server-programs
-        '((rust-mode . ("rust-analyzer"))
-          (haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
-          (python-mode . ("pylsp")))))
-       
-
-;; (use-package lsp-mode
-;;   :ensure t
-;;   :commands lsp lsp-deferred
-;;   :config
-;;   ;; Use rust-analyzer as the backend
-;;   (setq lsp-rust-server 'rust-analyzer))
 
 (use-package flycheck
   :ensure t
@@ -160,9 +98,6 @@
 (use-package company
   :ensure t
   :init (global-company-mode))
-
-;; (use-package company-anaconda
-;;   :hook (python-mode . python-docstring-mode))
 
 (when (file-exists-p "~/.emacs.d/.env.el")
   (load "~/.emacs.d/.env.el")
@@ -197,14 +132,6 @@
   :ensure t
   :defer t
   :commands helm-M-x)
-
-;; (use-package eglot
-;;   :ensure t
-;;   :commands eglot)
-
-(use-package typescript-mode
-  :ensure t
-  :defer t)
 
 (use-package ccls
   :ensure t
@@ -254,10 +181,6 @@
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
-
-;; (use-package smartparens
-;;   :ensure t
-;;   :hook (prog-mode . smartparens-mode))
 
 (use-package undo-tree
   :ensure t

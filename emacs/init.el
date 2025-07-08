@@ -34,6 +34,8 @@
 (load "~/.emacs.d/load-packages.el")
 (load-file "~/.emacs.d/evil-config.el")
 (load-file "~/.emacs.d/bindings.el")
+(load-file "~/.emacs.d/delimiters.el")
+(load-file "~/.emacs.d/languages.el")
 (load-file "~/.emacs.d/exwm-config.el")
 (load-file "~/.emacs.d/custom-functions.el")
 (load-file "~/.emacs.d/irc.el")
@@ -112,12 +114,6 @@
 (setq auto-save-default nil)
 
 ;; eglot/lsp
-(straight-use-package
- '(some-package :host github :repo "jdtsmith/eglot-booster"))
-
-(use-package eglot-booster
-	:after eglot
-	:config	(eglot-booster-mode))
 
 ;; 
 (use-package helpful
