@@ -61,6 +61,7 @@
   ;; Make sure cl-lib is loaded for incf
   (require 'cl-lib))
 
+;; typescript
 (use-package typescript-mode
   :ensure t
   :defer t
@@ -72,6 +73,8 @@
   (use-package js-doc
     :ensure t
     :commands js-doc-insert-function-doc))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
 
 ;; eglot boost

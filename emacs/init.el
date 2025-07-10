@@ -40,7 +40,6 @@
 (load-file "~/.emacs.d/custom-functions.el")
 (load-file "~/.emacs.d/irc.el")
 (load-file "~/.emacs.d/abbrevs.el")
-(load-file "~/.emacs.d/chan.el")
 
 (load-theme 'monokai-pro-spectrum t)
 (load-theme 'flatland t)
