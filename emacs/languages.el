@@ -73,6 +73,13 @@
   (use-package js-doc
     :ensure t
     :commands js-doc-insert-function-doc))
+
+(defun my-typescript-indent-setup ()
+  (setq-local typescript-indent-level 2)
+  (setq-local tab-width 2)
+  (setq-local indent-tabs-mode nil))  ; Use spaces, not tabs
+(add-hook 'typescript-mode-hook #'my-typescript-indent-setup)
+
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
