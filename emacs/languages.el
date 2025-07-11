@@ -49,7 +49,8 @@
   :config
   (setq rust-format-on-save t)) ; optional, formats code on save
 
-;; TODO defer this
+;; typescript
+;; TODO defer this package (?)
 (use-package yasnippet
   :ensure t
   :defer nil) ;; load immediately
@@ -61,18 +62,19 @@
   ;; Make sure cl-lib is loaded for incf
   (require 'cl-lib))
 
-;; typescript
+(use-package prettier
+  :ensure t
+  :after typescript-mode)
+
+
 (use-package typescript-mode
   :ensure t
   :defer t
   :hook
   ((typescript-mode . (lambda ()
-                       ;; Enable js-doc insertion keybinding
-			(evil-define-key 'normal global-map (kbd "SPC l t c") #'js-doc-insert-function-doc))))
-  :config
-  (use-package js-doc
-    :ensure t
-    :commands js-doc-insert-function-doc))
+                        (prettier-mode 1)  
+                        (eglot-ensure)     
+                        (evil-define-key 'normal global-map (kbd "SPC l t c") #'js-doc-insert-function-doc)))))
 
 (defun my-typescript-indent-setup ()
   (setq-local typescript-indent-level 2)
