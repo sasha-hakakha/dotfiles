@@ -72,9 +72,12 @@
   :defer t
   :hook
   ((typescript-mode . (lambda ()
-                        (prettier-mode 1)  
-                        (eglot-ensure)     
-                        (evil-define-key 'normal global-map (kbd "SPC l t c") #'js-doc-insert-function-doc)))))
+                        (prettier-mode 1)
+                        (eglot-ensure)
+                        ;; Local evil bindings for typescript-mode
+                        (evil-define-key 'normal typescript-mode-map
+                          (kbd "SPC l f") #'prettier-prettify
+                          (kbd "SPC l c") #'js-doc-insert-function-doc)))))
 
 (defun my-typescript-indent-setup ()
   (setq-local typescript-indent-level 2)

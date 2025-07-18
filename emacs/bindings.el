@@ -56,10 +56,6 @@
 (evil-define-key 'normal global-map (kbd "SPC B") 'balance-windows)
 (evil-define-key 'normal global-map (kbd "SPC o") 'delete-other-windows)
 
-(evil-define-key 'normal global-map (kbd "SPC f r")  'counsel-projectile-rg)
-(evil-define-key 'normal global-map (kbd "SPC f f")  'counsel-projectile-find-file)
-(evil-define-key 'normal global-map (kbd "SPC f p")  'counsel-projectile-switch-project)
-(evil-define-key 'normal global-map (kbd "SPC \;") 'helm-mini)
 (evil-define-key 'normal global-map (kbd "SPC L") 'display-line-numbers-mode)
 
 (evil-define-key 'normal global-map (kbd "SPC h c") 'helpful-callable)
@@ -101,7 +97,6 @@
 (global-set-key (kbd "C-c R") 'open-repos)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c F") 'toggle-frame-fullscreen)
-(global-set-key (kbd "C-c \;") 'helm-mini)
 (global-set-key (kbd "C-c i") 'ibuffer)
 (global-set-key (kbd "C-c q") 'kill-buffer)
 (global-set-key (kbd "C-c k") 'kill-all-vterm-buffers)
@@ -133,5 +128,29 @@
 ;; exwm
 (define-key exwm-mode-map (kbd "C-SPC") 'exwm-input-send-next-key)
 (provide 'bindings)
+
+;; consult / project management
+(define-prefix-command 'project-management-map)
+(global-set-key (kbd "C-p") 'project-management-map)
+(global-set-key (kbd "C-c ;") #'consult-buffer)
+(global-set-key (kbd "M-y") #'consult-yank-pop)
+(define-key project-management-map (kbd "f") #'consult-find)
+(define-key project-management-map (kbd "g") #'consult-git-grep)
+(define-key project-management-map (kbd "r") #'consult-ripgrep)
+(define-key project-management-map (kbd "b") #'consult-project-buffer)
+
+;; Evil normal mode bindings (make sure evil is loaded first)
+(evil-define-key 'normal 'global
+  (kbd "SPC b") #'consult-find)
+(evil-define-key 'normal 'global
+  (kbd "SPC p f") #'consult-find)
+(evil-define-key 'normal 'global
+  (kbd "SPC p g") #'consult-git-grep)
+(evil-define-key 'normal 'global
+  (kbd "SPC p r") #'consult-ripgrep)
+(evil-define-key 'normal 'global
+  (kbd "SPC p b") #'consult-project-buffer)
+(evil-define-key 'normal 'global
+  (kbd "SPC ;") #'consult-buffer)
 
 ;;; bindings.el ends here

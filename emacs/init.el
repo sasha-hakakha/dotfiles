@@ -30,6 +30,13 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
+
+
 
 (load "~/.emacs.d/load-packages.el")
 (load-file "~/.emacs.d/evil-config.el")
@@ -57,6 +64,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+;; TODO move to load-pacakges
 (require 'vertico)
 (vertico-mode 1)
 (which-key-mode)
@@ -65,14 +73,6 @@
 (display-time-mode 1)
 
 
-(use-package ibuffer-projectile
-  :ensure t
-  :config
-  (add-hook 'ibuffer-hook
-            (lambda ()
-              (ibuffer-projectile-set-filter-groups)
-              (unless (eq ibuffer-sorting-mode 'alphabetic)
-                (ibuffer-do-sort-by-alphabetic)))))
 (setq kill-buffer-query-functions nil)
 ;; git
 (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
@@ -101,8 +101,6 @@
 (setq python-docstring-style 'google)
 
 (global-company-mode)
-;; Ivy
-(require 'counsel)
 
 ;; org-mode
 (add-hook 'org-mode-hook (lambda () (corfu-mode -1)))
@@ -175,7 +173,6 @@
      "78e6be576f4a526d212d5f9a8798e5706990216e9be10174e3f3b015b8662e27"
      "fb83a50c80de36f23aea5919e50e1bccd565ca5bb646af95729dc8c5f926cbf3"
      default))
- '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages '(zzz-to-char)))
 
 (add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))

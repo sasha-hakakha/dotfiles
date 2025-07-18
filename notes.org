@@ -1,13 +1,19 @@
-* TODO !! binding to do equivalent of either ci( or di{ but figures out which paren automatically?
+* TODO [#A] !!!!!! FIGURE OUT A NEW WAY TO MOVE BETWEEN WORDS IN A NEW VTERM COMMAND !!!!!
+* TODO [#A] movement bindings for org mode
+* TODO [#A] custom alias for bash to run prev command with first 2 args swapped
+```
+eval "$(fc -ln -1 | sed 's/\(\S\+\) \(\S\+\) \(\S\+\)/\1 \3 \2/')"
+``` 
+* TODO [#A] research vim movement
 
-* TODO movement bindings for org mode
-* TODO project-eshell C-x p e (?)
-* TODO finish customizing corfu
-* TODO function to cycle through buffers of same program
-* TODO vim move to beginning/end of line while in insert mode
-* TODO function that moves to (most recent) firefox buffer, and if there isn't one spawn one
+* TODO [#B] finish customizing company!
+* TODO [#B] vim move to beginning/end of line while in insert mode
+* TODO [#B] function that moves to (most recent) firefox buffer, and if there isn't one spawn one
 
-* TODO chinese translate mode?
+* TODO [#C] !! binding to do equivalent of either ci( or di{ but figures out which paren automatically?
+* TODO [#C] project-eshell C-x p e (?)
+* TODO [#C] function to cycle through buffers of same program
+* TODO [#C] chinese translate mode?
 ** deepl?
+* TODO [#C] redo all my bindings with general.el
 
-* TODO more research + bindings for counsel-projectile 

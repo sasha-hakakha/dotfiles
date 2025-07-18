@@ -9,6 +9,19 @@
   (require 'use-package))
 
 ;; NOT LAZY
+(use-package quelpa
+  :ensure t)
+
+(use-package quelpa-use-package
+  :after quelpa
+  :ensure t)
+
+(use-package dotenv
+  :ensure nil
+  :quelpa
+  (dotenv :repo "pkulev/dotenv.el"
+          :fetcher github :upgrade t))
+
 (use-package general
   :ensure t
   :demand t)
@@ -48,21 +61,42 @@
   :demand t
   :init (telephone-line-mode 1))
 
+;; PROJECT MANAGEMENT
 (use-package vertico
   :ensure t
   :init (vertico-mode))
 
-(use-package projectile
+(use-package marginalia
   :ensure t
-  :init (projectile-mode +1))
+  :init (marginalia-mode))
 
-(use-package counsel-projectile
+(use-package orderless
   :ensure t
-  :after (counsel projectile))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
-(use-package ibuffer-projectile
+;; TODO should this be moved to bindings file?
+(define-prefix-command 'project-management-map)
+(global-set-key (kbd "C-p") 'project-management-map)
+
+(use-package consult
+  :ensure t)
+
+;; org!!
+(use-package org
   :ensure t
-  :after projectile)
+  :hook
+  (org-mode . my/org-evil-window-bindings)
+  :config
+  ;; Define a function to set the keys locally in org-mode buffers
+  (defun my/org-evil-window-bindings ()
+    (evil-define-key 'normal org-mode-map
+      (kbd "M-h") 'evil-window-left
+      (kbd "M-j") 'evil-window-down
+      (kbd "M-k") 'evil-window-up
+      (kbd "M-l") 'evil-window-right)))
+
 
 (use-package evil-snipe
   :ensure t
@@ -90,6 +124,12 @@
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
 
 ;; LAZY
+;; (use-package chatgpt :ensure t)
+
+;; (use-package dotenv
+;;   :ensure t
+;;   :config
+;;   (dotenv-update-env-from-file "~/.emacs.d/.env"))
 
 (use-package flycheck
   :ensure t
@@ -99,18 +139,18 @@
   :ensure t
   :init (global-company-mode))
 
-(when (file-exists-p "~/.emacs.d/.env.el")
-  (load "~/.emacs.d/.env.el")
-    (use-package smudge
-    :bind-keymap ("C-c ." . smudge-command-map)
-    :custom
-    (smudge-oauth2-client-secret "...")
-    (smudge-oauth2-client-id "...")
-    ;; optional: enable transient map for frequent commands
-    (smudge-player-use-transient-map t)
-    :config
-    ;; optional: display current song in mode line
-    (global-smudge-remote-mode)))
+;; (when (file-exists-p "~/.emacs.d/.env.el")
+;;   (load "~/.emacs.d/.env.el")
+;;     (use-package smudge
+;;     :bind-keymap ("C-c ." . smudge-command-map)
+;;     :custom
+;;     (smudge-oauth2-client-secret "...")
+;;     (smudge-oauth2-client-id "...")
+;;     ;; optional: enable transient map for frequent commands
+;;     (smudge-player-use-transient-map t)
+;;     :config
+;;     ;; optional: display current song in mode line
+;;     (global-smudge-remote-mode)))
 
 (use-package haskell-mode
   :ensure t
@@ -150,12 +190,6 @@
   :ensure t
   :init (ivy-mode 1))
 
-(use-package counsel
-  :ensure t
-  :after ivy
-  :bind (("M-x" . counsel-M-x))
-  :config (counsel-mode 1))
-
 (use-package which-key
   :ensure t
   :init (which-key-mode))
@@ -191,9 +225,9 @@
   :after evil
   :config (evil-lion-mode))
 
-(use-package org-gcal
-  :ensure t
-  :defer t)
+;; (use-package org-gcal
+;;   :ensure t
+;;   :defer t)
 
 (use-package editorconfig
   :ensure t
