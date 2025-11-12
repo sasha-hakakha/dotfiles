@@ -130,15 +130,16 @@
 (provide 'bindings)
 
 ;; consult / project management
-(define-prefix-command 'project-management-map)
-(global-set-key (kbd "C-p") 'project-management-map)
-(global-set-key (kbd "C-c ;") #'consult-buffer)
-(global-set-key (kbd "M-y") #'consult-yank-pop)
-(define-key project-management-map (kbd "f") #'consult-find)
-(define-key project-management-map (kbd "g") #'consult-git-grep)
-(define-key project-management-map (kbd "r") #'consult-ripgrep)
-(define-key project-management-map (kbd "b") #'consult-project-buffer)
+;; (define-prefix-command 'project-management-map)
+;; (global-set-key (kbd "C-p") 'project-management-map)
+;; (global-set-key (kbd "C-c ;") #'consult-buffer)
+;; (global-set-key (kbd "M-y") #'consult-yank-pop)
+;; (define-key project-management-map (kbd "f") #'consult-find)
+;; (define-key project-management-map (kbd "g") #'consult-git-grep)
+;; (define-key project-management-map (kbd "r") #'consult-ripgrep)
+;; (define-key project-management-map (kbd "b") #'consult-project-buffer)
 
+(global-set-key (kbd "C-c ;") 'consult-buffer)
 ;; Evil normal mode bindings (make sure evil is loaded first)
 (evil-define-key 'normal 'global
   (kbd "SPC b") #'consult-find)

@@ -72,9 +72,8 @@
 
 (use-package orderless
   :ensure t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  :config
+  (setq completion-styles '(orderless basic)))
 
 ;; TODO should this be moved to bindings file?
 (define-prefix-command 'project-management-map)
@@ -97,6 +96,13 @@
       (kbd "M-k") 'evil-window-up
       (kbd "M-l") 'evil-window-right)))
 
+(use-package evil-escape
+  :ensure t
+  :after evil
+  :init
+  (setq evil-escape-key-sequence "jk")
+  :config
+  (evil-escape-mode 1))
 
 (use-package evil-snipe
   :ensure t
@@ -168,10 +174,10 @@
   :ensure t
   :defer t)
   
-(use-package helm
-  :ensure t
-  :defer t
-  :commands helm-M-x)
+;; (use-package helm
+;;   :ensure t
+;;   :defer t
+;;   :commands helm-M-x)
 
 (use-package ccls
   :ensure t
@@ -186,9 +192,9 @@
   :commands yas-global-mode
   :config (yas-global-mode 1))
 
-(use-package ivy
-  :ensure t
-  :init (ivy-mode 1))
+;; (use-package ivy
+;;   :ensure t
+;;   :init (ivy-mode 1))
 
 (use-package which-key
   :ensure t

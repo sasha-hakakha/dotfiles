@@ -15,9 +15,16 @@
         '((rust-mode . ("rust-analyzer"))
           (haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
           ((typescript-mode tsx-ts-mode) . ("typescript-language-server" "--stdio"))
+          ((js-mode js2-mode javascript-mode) . ("typescript-language-server" "--stdio"))
           (python-mode . ("pylsp"))))
   (add-hook 'typescript-mode-hook #'eglot-ensure)
   (add-hook 'tsx-ts-mode-hook #'eglot-ensure))
+
+;; yaml/yml
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.ya?ml\\'" . yaml-mode)
+  :defer t)
 
 ;; python
 (use-package python-black
@@ -88,6 +95,17 @@
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
+(use-package js2-mode
+  :ensure t
+  :mode "\\.js\\'"
+  :hook ((python-mode . eglot-ensure)
+         (python-mode . company-mode)
+         (python-mode . flycheck-mode)
+         ;; enable prettier-js on save in js2-mode
+         (js2-mode . (lambda ()
+                       (prettier-mode 1))))
+  :config
+  (setq js2-basic-offset 2))
 
 ;; eglot boost
 (straight-use-package
