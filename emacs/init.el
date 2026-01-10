@@ -43,7 +43,8 @@
 (load-file "~/.emacs.d/bindings.el")
 (load-file "~/.emacs.d/delimiters.el")
 (load-file "~/.emacs.d/languages.el")
-(load-file "~/.emacs.d/exwm-config.el")
+;; EXWM: disabled for now
+;; (load-file "~/.emacs.d/exwm-config.el")
 (load-file "~/.emacs.d/custom-functions.el")
 (load-file "~/.emacs.d/irc.el")
 (load-file "~/.emacs.d/abbrevs.el")

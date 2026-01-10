@@ -20,6 +20,28 @@
   (add-hook 'typescript-mode-hook #'eglot-ensure)
   (add-hook 'tsx-ts-mode-hook #'eglot-ensure))
 
+;; C/C++
+(use-package clang-format
+  :ensure t)
+
+(with-eval-after-load 'eglot
+  (yas-global-mode 1)
+  (add-to-list 'eglot-server-programs '(c-mode . ("clangd")))
+  (add-to-list 'eglot-server-programs '(c++-mode . ("clangd"))))
+
+(defun my-c-cpp-mode-setup ()
+  (when (executable-find "clangd")
+    (eglot-ensure))
+  (company-mode 1)
+  (flycheck-mode 1)
+  (when (locate-dominating-file default-directory ".clang-format")
+    (add-hook 'before-save-hook #'clang-format-buffer nil t)))
+
+(use-package cc-mode
+  :ensure nil
+  :hook ((c-mode . my-c-cpp-mode-setup)
+         (c++-mode . my-c-cpp-mode-setup)))
+
 ;; yaml/yml
 (use-package yaml-mode
   :ensure t

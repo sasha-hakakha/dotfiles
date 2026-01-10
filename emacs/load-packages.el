@@ -192,9 +192,13 @@
   :commands yas-global-mode
   :config (yas-global-mode 1))
 
-;; (use-package ivy
-;;   :ensure t
-;;   :init (ivy-mode 1))
+(use-package ivy
+   :ensure t)
+
+(use-package counsel
+  :ensure t
+  :after ivy
+  :config (counsel-mode 1))
 
 (use-package which-key
   :ensure t
