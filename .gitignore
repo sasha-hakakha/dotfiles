@@ -1,2 +1,9 @@
 dwm/dwm
 dwm/dwm.png
+
+dwm/*.o
+#*
+.#*
+
+st/st
+st/*.o

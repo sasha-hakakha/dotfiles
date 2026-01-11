@@ -9,11 +9,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_cyan[]        = "#5bcefa";
-static const char col_green[]       = "#00ff7f";
-static const char col_violet[]      = "#32174d";
-static const char col_dark_magenta[]       = "#870087";
-static const char col_pink[]       = "#f5a9b8";
+static const char col_cyan[]        = "#222222";
+static const char col_green[]       = "#444444";
+static const char col_violet[]      = "#bbbbbb";
+static const char col_dark_magenta[]       = "#eeeeee";
+static const char col_pink[]       = "#78038c";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_dark_magenta, col_cyan, col_green },
