@@ -24,6 +24,10 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 (straight-use-package 'use-package)
+;; VERY VERY BAD, HORRIBLE, FIX THIS EVENTUALLY
+(when (fboundp 'straight--warn-package-loaded)
+  (defalias 'straight--warn-package-loaded #'ignore))
+
 (require 'use-package)
 
 (setq straight-use-package-by-default t)
@@ -42,8 +46,7 @@
 
 (load-theme 'monokai-pro-spectrum t)
 (load-theme 'flatland t)
-(use-package rainbow-delimiters
-  :ensure t)
+(use-package rainbow-delimiters)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -58,8 +61,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 ;; TODO move to load-pacakges
-(use-package vertico
-  :ensure t)
+(use-package vertico)
 (vertico-mode 1)
 (which-key-mode)
 (global-visual-line-mode)
@@ -73,12 +75,10 @@
 (evil-define-key 'normal global-map (kbd "SPC g") 'magit-status)
 
 ;; flycheck
-(use-package flycheck
-  :ensure t)
+(use-package flycheck)
 
 ;; recent files
-(use-package recentf
-  :ensure t)
+(use-package recentf)
 
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
@@ -90,13 +90,7 @@
 ;; C
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c-mode))
 
-;; python
-(eval-after-load "company"
- '(add-to-list 'company-backends 'company-anaconda))
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'company-mode)
-(setq python-docstring-style 'google)
-
+;; company
 (global-company-mode)
 
 ;; org-mode
@@ -112,16 +106,9 @@
 
 ;; 
 (use-package helpful
-  :ensure t
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
-
-;;  mac
-(if (eq system-type 'darwin)
-    (lambda()
-    (setq mac-command-modifier 'none)
-    (setq mac-option-modifier) 'meta))
 
 ;; vterm
 (setq vterm-max-scrollback 100000)
@@ -172,5 +159,5 @@
      default))
  '(package-selected-packages '(zzz-to-char)))
 
-(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
+;;(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here

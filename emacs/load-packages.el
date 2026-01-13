@@ -6,7 +6,7 @@
 
 
 ;; NOT LAZY
-(use-package quelpa
+(use-package quelpa)
   :ensure t)
 
 (use-package quelpa-use-package
