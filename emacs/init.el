@@ -24,9 +24,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 (straight-use-package 'use-package)
-;; VERY VERY BAD, HORRIBLE, FIX THIS EVENTUALLY
-(when (fboundp 'straight--warn-package-loaded)
-  (defalias 'straight--warn-package-loaded #'ignore))
 
 (require 'use-package)
 
@@ -156,8 +153,7 @@
      "b1a691bb67bd8bd85b76998caf2386c9a7b2ac98a116534071364ed6489b695d"
      "78e6be576f4a526d212d5f9a8798e5706990216e9be10174e3f3b015b8662e27"
      "fb83a50c80de36f23aea5919e50e1bccd565ca5bb646af95729dc8c5f926cbf3"
-     default))
- '(package-selected-packages '(zzz-to-char)))
+     default)))
 
 ;;(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here

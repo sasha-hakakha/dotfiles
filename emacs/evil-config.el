@@ -1,7 +1,6 @@
 ;; evil-config.el
 
 (use-package evil
-  :ensure t
   :init
   (setq evil-want-keybinding nil)
   :config
@@ -9,7 +8,6 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :init
   (setq evil-want-keybinding nil)
   :config
