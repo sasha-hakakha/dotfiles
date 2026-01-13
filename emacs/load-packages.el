@@ -1,12 +1,9 @@
-(require 'package)
-
 ;;; Code:
-(eval-when-compile
-  ;; Ensure 'use-package' is installed
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-  (require 'use-package))
+(straight-use-package 'use-package)
+(require 'use-package)
+
+(setq straight-use-package-by-default t)
+
 
 ;; NOT LAZY
 (use-package quelpa
@@ -17,10 +14,11 @@
   :ensure t)
 
 (use-package dotenv
-  :ensure nil
-  :quelpa
-  (dotenv :repo "pkulev/dotenv.el"
-          :fetcher github :upgrade t))
+  :straight (dotenv
+             :type git
+             :host github
+             :repo "pkulev/dotenv.el"))
+
 
 (use-package general
   :ensure t
@@ -46,6 +44,15 @@
   :demand t
   :config
   (evil-collection-init))
+
+(use-package eglot-booster
+  :straight (eglot-booster
+             :type git
+             :host github
+             :repo "jdtsmith/eglot-booster")
+  :after eglot
+  :config
+  (eglot-booster-mode))
 
 (use-package monokai-pro-theme
   :ensure t
@@ -130,6 +137,10 @@
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
 
 ;; LAZY
+(use-package cmake-mode
+ :ensure t
+ :defer t)
+
 ;; (use-package chatgpt :ensure t)
 
 ;; (use-package dotenv

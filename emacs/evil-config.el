@@ -23,11 +23,23 @@
     (interactive)
     (evil-yank (point) (line-end-position))))
 
-(require 'evil-snipe)
-(evil-snipe-mode +1)
-(evil-snipe-override-mode +1)
+(use-package evil-snipe
+	     :after evil
+	     :config
+	     (evil-snipe-mode 1)
+	     (evil-snipe-override-mode 1))
+
+(use-package evil-easymotion
+  :after evil
+  :config
+  (evilem-default-keybindings "SPC"))
+
+(use-package evil-lion
+  :after evil
+  :config
+  (evil-lion-mode 1))
+
 (evilem-default-keybindings "SPC")
-(evil-lion-mode +1)
 
 (provide 'evil-config)
 ;;; evil-config.el ends here

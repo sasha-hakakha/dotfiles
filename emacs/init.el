@@ -5,16 +5,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq debug-on-error nil)
 (setq evil-want-keybinding nil)
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '( "jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
-;;    (add-to-list 'package-archives
-;;    '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
-   (require 'package)
-   (add-to-list 'package-archives
-		'("Melpa" . "https://melpa.org/packages/") t)
+(setq debug-on-error nil)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -30,12 +23,10 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-(unless (package-installed-p 'quelpa)
-  (with-temp-buffer
-    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
-    (eval-buffer)
-    (quelpa-self-upgrade)))
+(straight-use-package 'use-package)
+(require 'use-package)
 
+(setq straight-use-package-by-default t)
 
 
 (load "~/.emacs.d/load-packages.el")
@@ -51,7 +42,8 @@
 
 (load-theme 'monokai-pro-spectrum t)
 (load-theme 'flatland t)
-(require 'rainbow-delimiters)
+(use-package rainbow-delimiters
+  :ensure t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -66,7 +58,8 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 ;; TODO move to load-pacakges
-(require 'vertico)
+(use-package vertico
+  :ensure t)
 (vertico-mode 1)
 (which-key-mode)
 (global-visual-line-mode)
@@ -80,10 +73,13 @@
 (evil-define-key 'normal global-map (kbd "SPC g") 'magit-status)
 
 ;; flycheck
-(require 'flycheck)
+(use-package flycheck
+  :ensure t)
 
 ;; recent files
-(require 'recentf)
+(use-package recentf
+  :ensure t)
+
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (setq recentf-max-saved-items 25)
