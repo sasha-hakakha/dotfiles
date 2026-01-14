@@ -1,21 +1,20 @@
 ;;; Code:
-(straight-use-package 'use-package)
+
+(require 'package)
+
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+
+(unless package--initialized
+  (package-initialize))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 (require 'use-package)
-
-(setq straight-use-package-by-default t)
-
-
-;; NOT LAZY
-(use-package quelpa)
-
-(use-package quelpa-use-package
-  :after quelpa)
-
-(use-package dotenv
-  :straight (dotenv
-             :type git
-             :host github
-             :repo "pkulev/dotenv.el"))
+(setq use-package-always-ensure t)
 
 (use-package general
   :demand t)
@@ -28,8 +27,10 @@
 
 (use-package evil
   :demand t
-  :init (setq evil-want-integration t)
-  :config (evil-mode 1))
+  :init
+  (setq evil-want-integration t)
+  :config
+  (evil-mode 1))
 
 (use-package evil-collection
   :after evil
@@ -37,49 +38,42 @@
   :config
   (evil-collection-init))
 
-(use-package eglot-booster
-  :straight (eglot-booster
-             :type git
-             :host github
-             :repo "jdtsmith/eglot-booster")
-  :after eglot
-  :config
-  (eglot-booster-mode))
-
 (use-package monokai-pro-theme
   :demand t)
 
 (use-package beacon
   :demand t
-  :init (beacon-mode 1))
+  :after (projectile flycheck evil)
+  :init
+  (beacon-mode 1))
 
 (use-package telephone-line
   :demand t
-  :init (telephone-line-mode 1))
+  :after (projectile flycheck evil nyan-mode winum meow)
+  :init
+  (telephone-line-mode 1))
 
-;; PROJECT MANAGEMENT
 (use-package vertico
-  :init (vertico-mode))
+  :init
+  (vertico-mode))
 
 (use-package marginalia
-  :init (marginalia-mode))
+  :init
+  (marginalia-mode))
 
 (use-package orderless
   :config
   (setq completion-styles '(orderless basic)))
 
-;; TODO should this be moved to bindings file?
 (define-prefix-command 'project-management-map)
 (global-set-key (kbd "C-p") 'project-management-map)
 
 (use-package consult)
 
-;; org!!
 (use-package org
   :hook
   (org-mode . my/org-evil-window-bindings)
   :config
-  ;; Define a function to set the keys locally in org-mode buffers
   (defun my/org-evil-window-bindings ()
     (evil-define-key 'normal org-mode-map
       (kbd "M-h") 'evil-window-left
@@ -100,12 +94,6 @@
 (use-package evil-easymotion
   :after evil)
 
-(use-package corfu-terminal
-  :init
-  (corfu-terminal-mode 1)
-  :custom
-  (corfu-terminal-disable-on-gui nil))
-
 (use-package buffer-move
   :demand t)
 
@@ -115,15 +103,16 @@
   :config
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` "))
 
-;; LAZY
 (use-package cmake-mode
- :defer t)
+  :defer t)
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :init
+  (global-flycheck-mode))
 
 (use-package company
-  :init (global-company-mode))
+  :init
+  (global-company-mode))
 
 (use-package haskell-mode
   :defer t)
@@ -136,7 +125,7 @@
 
 (use-package php-mode
   :defer t)
-  
+
 (use-package ccls
   :commands ccls-initialize)
 
@@ -145,16 +134,19 @@
 
 (use-package yasnippet
   :commands yas-global-mode
-  :config (yas-global-mode 1))
+  :config
+  (yas-global-mode 1))
 
 (use-package ivy)
 
 (use-package counsel
   :after ivy
-  :config (counsel-mode 1))
+  :config
+  (counsel-mode 1))
 
 (use-package which-key
-  :init (which-key-mode))
+  :init
+  (which-key-mode))
 
 (use-package web-mode
   :mode "\\.html?\\'")
@@ -174,14 +166,17 @@
          ("C-h k" . helpful-key)))
 
 (use-package undo-tree
-  :init (global-undo-tree-mode 1))
+  :init
+  (global-undo-tree-mode 1))
 
 (use-package evil-lion
   :after evil
-  :config (evil-lion-mode))
+  :config
+  (evil-lion-mode))
 
 (use-package editorconfig
-  :config (editorconfig-mode 1))
+  :config
+  (editorconfig-mode 1))
 
 (use-package lua-mode
   :defer t)

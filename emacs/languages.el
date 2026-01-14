@@ -4,9 +4,14 @@
 ;; Keywords: languages
 ;;; Commentary:
 
-;; 
-
 ;;; Code:
+(use-package quelpa
+  :ensure t)
+
+(use-package quelpa-use-package
+  :ensure t
+  :after quelpa)
+
 (use-package eglot
   :ensure t
   :commands eglot
@@ -79,22 +84,19 @@
   (setq rust-format-on-save t)) ; optional, formats code on save
 
 ;; typescript
-;; TODO defer this package (?)
 (use-package yasnippet
   :ensure t
   :defer nil) ;; load immediately
 
-(use-package js-doc
-  :ensure t
-  :after yasnippet
-  :config
-  ;; Make sure cl-lib is loaded for incf
-  (require 'cl-lib))
+;; (use-package js-doc
+;;   :ensure t
+;;   :after yasnippet
+;;   :config
+;;   (require 'cl-lib))
 
 (use-package prettier
   :ensure t
   :after typescript-mode)
-
 
 (use-package typescript-mode
   :ensure t
@@ -103,7 +105,6 @@
   ((typescript-mode . (lambda ()
                         (prettier-mode 1)
                         (eglot-ensure)
-                        ;; Local evil bindings for typescript-mode
                         (evil-define-key 'normal typescript-mode-map
                           (kbd "SPC l f") #'prettier-prettify
                           (kbd "SPC l c") #'js-doc-insert-function-doc)))))
@@ -111,7 +112,7 @@
 (defun my-typescript-indent-setup ()
   (setq-local typescript-indent-level 2)
   (setq-local tab-width 2)
-  (setq-local indent-tabs-mode nil))  ; Use spaces, not tabs
+  (setq-local indent-tabs-mode nil))
 (add-hook 'typescript-mode-hook #'my-typescript-indent-setup)
 
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
@@ -123,20 +124,16 @@
   :hook ((python-mode . eglot-ensure)
          (python-mode . company-mode)
          (python-mode . flycheck-mode)
-         ;; enable prettier-js on save in js2-mode
          (js2-mode . (lambda ()
                        (prettier-mode 1))))
   :config
   (setq js2-basic-offset 2))
 
-;; eglot boost
-(straight-use-package
- '(some-package :host github :repo "jdtsmith/eglot-booster"))
-
 (use-package eglot-booster
-	:after eglot
-	:config	(eglot-booster-mode))
-
+  :after eglot
+  :quelpa (eglot-booster :fetcher github :repo "jdtsmith/eglot-booster")
+  :config
+  (eglot-booster-mode 1))
 
 (provide 'languages)
 ;;; languages.el ends here

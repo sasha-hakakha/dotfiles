@@ -16,3 +16,6 @@ function ll() {
     mkdir -p "$1"
     cd "$1"
 }
+. "$HOME/.cargo/env"
+export PATH="$HOME/.cargo/bin:$PATH"
+export LD_LIBRARY_PATH=/usr/local/lib

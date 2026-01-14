@@ -8,26 +8,25 @@
 (setq evil-want-keybinding nil)
 (setq debug-on-error nil)
 
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
-            user-emacs-directory)))
-      (bootstrap-version 7))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-(straight-use-package 'use-package)
+;; Initialize package.el
+(require 'package)
+
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+
+(unless package--initialized
+  (package-initialize))
+
+;; Bootstrap use-package if missing
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (require 'use-package)
 
-(setq straight-use-package-by-default t)
+;; Optional but recommended
+(setq use-package-always-ensure t)
 
 
 (load "~/.emacs.d/load-packages.el")
@@ -153,7 +152,19 @@
      "b1a691bb67bd8bd85b76998caf2386c9a7b2ac98a116534071364ed6489b695d"
      "78e6be576f4a526d212d5f9a8798e5706990216e9be10174e3f3b015b8662e27"
      "fb83a50c80de36f23aea5919e50e1bccd565ca5bb646af95729dc8c5f926cbf3"
-     default)))
+     default))
+ '(package-selected-packages
+   '(anaconda-mode beacon buffer-move ccls clang-format cmake-mode
+		   company consult counsel eglot-booster
+		   evil-collection evil-easymotion evil-escape
+		   evil-lion evil-snipe exwm-modeline flycheck-haskell
+		   general helpful js2-mode json-reformat lua-mode
+		   magit marginalia monokai-pro-theme orderless
+		   php-mode prettier python-black python-docstring
+		   python-mode quelpa quelpa-use-package racket-mode
+		   rainbow-delimiters rust-mode telephone-line
+		   typescript-mode undo-tree vertico vterm web-mode
+		   yaml-mode yasnippet)))
 
 ;;(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here
