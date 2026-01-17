@@ -13,6 +13,7 @@
 
 (setq package-archives
       '(("gnu"   . "https://elpa.gnu.org/packages/")
+	("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
         ("melpa" . "https://melpa.org/packages/")))
 
 (unless package--initialized
@@ -155,14 +156,15 @@
      default))
  '(package-selected-packages
    '(anaconda-mode beacon buffer-move ccls clang-format cmake-mode
-		   company consult counsel eglot-booster
-		   evil-collection evil-easymotion evil-escape
-		   evil-lion evil-snipe exwm-modeline flycheck-haskell
-		   general helpful js2-mode json-reformat lua-mode
-		   magit marginalia monokai-pro-theme orderless
-		   php-mode prettier python-black python-docstring
-		   python-mode quelpa quelpa-use-package racket-mode
-		   rainbow-delimiters rust-mode telephone-line
+		   company consult counsel dockerfile-mode
+		   eglot-booster evil-collection evil-easymotion
+		   evil-escape evil-lion evil-snipe exwm-modeline
+		   flycheck-haskell flycheck-slime general helpful
+		   js2-mode json-reformat lua-mode magit marginalia
+		   monokai-pro-theme orderless php-mode prettier
+		   python-black python-docstring python-mode
+		   quelpa-use-package racket-mode rainbow-delimiters
+		   rust-mode slime slime-company telephone-line
 		   typescript-mode undo-tree vertico vterm web-mode
 		   yaml-mode yasnippet)))
 

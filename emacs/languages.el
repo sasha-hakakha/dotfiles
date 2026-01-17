@@ -135,5 +135,20 @@
   :config
   (eglot-booster-mode 1))
 
+;; common lisp (SLIME)
+(use-package slime
+  :ensure t
+  :mode ("\\.lisp\\'" . lisp-mode)
+  :init
+  (setq inferior-lisp-program "sbcl")
+  :config
+  (setq slime-contribs '(slime-fancy slime-company)))
+
+(use-package slime-company
+  :ensure t
+  :after (slime company)
+  :config
+  (setq slime-company-completion 'fuzzy))
+
 (provide 'languages)
 ;;; languages.el ends here
