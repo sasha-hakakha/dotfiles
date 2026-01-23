@@ -7,6 +7,7 @@
 
 (setq evil-want-keybinding nil)
 (setq debug-on-error nil)
+(setq ring-bell-function 'ignore)
 
 ;; Initialize package.el
 (require 'package)
