@@ -127,7 +127,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("89c50e934a32921ed51da9fa883484a433f32fbc5cf9780860d13322e23edcde"
+   '("2d74de1cc32d00b20b347f2d0037b945a4158004f99877630afc034a674e3ab7"
+     "89c50e934a32921ed51da9fa883484a433f32fbc5cf9780860d13322e23edcde"
      "ebbd4bbb0f017cb09f7a3b1363b83dfde0c5f4970cda2705419457366cd2de91"
      "468c69d9ee35f90c5686f14786516071f3fb1848c60bad1caa40bc5dcda811dc"
      "b6269b0356ed8d9ed55b0dcea10b4e13227b89fd2af4452eee19ac88297b0f99"
@@ -158,16 +159,16 @@
  '(package-selected-packages
    '(anaconda-mode beacon buffer-move ccls clang-format cmake-mode
 		   company consult counsel dockerfile-mode
-		   eglot-booster evil-collection evil-easymotion
-		   evil-escape evil-lion evil-snipe exwm-modeline
-		   flycheck-haskell flycheck-slime general helpful
-		   js2-mode json-reformat lua-mode magit marginalia
-		   monokai-pro-theme orderless php-mode prettier
-		   python-black python-docstring python-mode
-		   quelpa-use-package racket-mode rainbow-delimiters
-		   rust-mode slime slime-company telephone-line
-		   typescript-mode undo-tree vertico vterm web-mode
-		   yaml-mode yasnippet)))
+		   dracula-theme eglot-booster evil-collection
+		   evil-easymotion evil-escape evil-lion evil-snipe
+		   exwm-modeline flycheck-haskell flycheck-slime
+		   general helpful js2-mode json-reformat lua-mode
+		   magit marginalia monokai-pro-theme orderless
+		   php-mode prettier python-black python-docstring
+		   python-mode quelpa-use-package racket-mode
+		   rainbow-delimiters rust-mode slime slime-company
+		   telephone-line typescript-mode undo-tree vertico
+		   vterm web-mode yaml-mode yasnippet)))
 
 ;;(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here
