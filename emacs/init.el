@@ -42,8 +42,18 @@
 (load-file "~/.emacs.d/irc.el")
 (load-file "~/.emacs.d/abbrevs.el")
 
-(load-theme 'monokai-pro-spectrum t)
+(load-theme 'dracula t)
 (load-theme 'flatland t)
+(load-theme 'monokai-pro-spectrum t)
+(dolist (face '(default
+                cursor
+                fringe
+                mode-line
+                mode-line-inactive
+                header-line
+                minibuffer-prompt))
+  (set-face-attribute face nil :inherit 'unspecified))
+
 (use-package rainbow-delimiters)
 
 (custom-set-faces
@@ -65,7 +75,75 @@
 (global-visual-line-mode)
 (display-battery-mode 1)
 (display-time-mode 1)
+;; TODO MOVE
+(defconst my-dracula-colors
+  '((bg      . "#282a36")
+    (fg      . "#f8f8f2")
+    (comment . "#6272a4")
+    (cyan    . "#8be9fd")
+    (green   . "#50fa7b")
+    (orange  . "#ffb86c")
+    (pink    . "#ff79c6")
+    (purple  . "#bd93f9")
+    (red     . "#ff5555")
+    (yellow  . "#f1fa8c")))
+(defmacro my-dracula (name)
+  `(cdr (assoc ,name my-dracula-colors)))
+(defun my-apply-dracula-syntax ()
+  (set-face-attribute 'font-lock-builtin-face nil
+                      :foreground (my-dracula 'cyan)
+                      :slant 'italic)
 
+  ;; (set-face-attribute 'font-lock-comment-face nil
+  ;;                     :foreground (my-dracula 'comment))
+
+  (set-face-attribute 'font-lock-comment-delimiter-face nil
+                      :foreground (my-dracula 'comment))
+
+  (set-face-attribute 'font-lock-constant-face nil
+                      :foreground (my-dracula 'purple))
+
+  ;; (set-face-attribute 'font-lock-doc-face nil
+  ;;                     :foreground (my-dracula 'comment))
+
+  (set-face-attribute 'font-lock-function-name-face nil
+                      :foreground (my-dracula 'green)
+                      :weight 'bold)
+
+  (set-face-attribute 'font-lock-keyword-face nil
+                      :foreground (my-dracula 'pink)
+                      :weight 'bold)
+
+  (set-face-attribute 'font-lock-negation-char-face nil
+                      :foreground (my-dracula 'cyan))
+
+  (set-face-attribute 'font-lock-number-face nil
+                      :foreground (my-dracula 'purple))
+
+  (set-face-attribute 'font-lock-operator-face nil
+                      :foreground (my-dracula 'pink))
+
+  (set-face-attribute 'font-lock-preprocessor-face nil
+                      :foreground (my-dracula 'orange))
+
+  (set-face-attribute 'font-lock-regexp-grouping-backslash nil
+                      :foreground (my-dracula 'cyan))
+
+  (set-face-attribute 'font-lock-regexp-grouping-construct nil
+                      :foreground (my-dracula 'purple))
+
+  (set-face-attribute 'font-lock-string-face nil
+                      :foreground (my-dracula 'yellow))
+
+  (set-face-attribute 'font-lock-type-face nil
+                      :foreground (my-dracula 'cyan))
+
+  (set-face-attribute 'font-lock-variable-name-face nil
+                      :foreground (my-dracula 'fg)
+                      :weight 'bold))
+(my-apply-dracula-syntax)
+
+;; END TODO MOVE
 
 (setq kill-buffer-query-functions nil)
 ;; git
@@ -91,8 +169,6 @@
 ;; company
 (global-company-mode)
 
-;; org-mode
-(add-hook 'org-mode-hook (lambda () (corfu-mode -1)))
 
 ;; corfu / auto completion
 (setq text-mode-ispell-word-completion nil)
@@ -127,7 +203,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("2d74de1cc32d00b20b347f2d0037b945a4158004f99877630afc034a674e3ab7"
+   '("836b204184da749ade2d71d8765b91841c747a9fc06a27cec188ebfb456410c3"
+     "65057902bcd51d84e0e28036f4759295e08f57b1ba94b9ae10a8d5ffde5f154f"
+     "2d74de1cc32d00b20b347f2d0037b945a4158004f99877630afc034a674e3ab7"
      "89c50e934a32921ed51da9fa883484a433f32fbc5cf9780860d13322e23edcde"
      "ebbd4bbb0f017cb09f7a3b1363b83dfde0c5f4970cda2705419457366cd2de91"
      "468c69d9ee35f90c5686f14786516071f3fb1848c60bad1caa40bc5dcda811dc"
@@ -166,7 +244,7 @@
 		   magit marginalia monokai-pro-theme orderless
 		   php-mode prettier python-black python-docstring
 		   python-mode quelpa-use-package racket-mode
-		   rainbow-delimiters rust-mode slime slime-company
+		   rainbow-delimiters rust-mode slime-company
 		   telephone-line typescript-mode undo-tree vertico
 		   vterm web-mode yaml-mode yasnippet)))
 
