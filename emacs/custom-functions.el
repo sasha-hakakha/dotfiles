@@ -48,6 +48,19 @@
   "Open a new instance of vterm."
   (interactive)
   (vterm (generate-new-buffer-name "*vterm*")))
+(defun copy-cpp-function-names-to-clipboard ()
+  "Copy all function names in the current C++ buffer to the system clipboard."
+  (interactive)
+  (require 'imenu)
+  (let* ((alist (imenu--make-index-alist))
+         (names (mapcar (lambda (x)
+                          (if (listp x) (car x) x))
+                        alist))
+         (result (string-join names "\n")))
+    (kill-new result)  ;; copy to Emacs kill ring
+    (if (fboundp 'gui-set-selection)
+        (gui-set-selection 'CLIPBOARD result))  ;; copy to system clipboard
+    (message "Copied %d function names to clipboard" (length names))))
 
 (provide 'custom-functions)
 

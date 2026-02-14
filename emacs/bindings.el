@@ -154,8 +154,4 @@
 (evil-define-key 'normal 'global
   (kbd "SPC ;") #'consult-buffer)
 
-(with-eval-after-load 'ivy
-  (define-key ivy-minibuffer-map (kbd "C-p") #'ivy-previous-line)
-  (define-key ivy-minibuffer-map (kbd "C-n") #'ivy-next-line))
-
 ;;; bindings.el ends here

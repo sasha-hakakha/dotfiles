@@ -236,17 +236,17 @@
      default))
  '(package-selected-packages
    '(anaconda-mode beacon buffer-move ccls clang-format cmake-mode
-		   company consult counsel dockerfile-mode
-		   dracula-theme eglot-booster evil-collection
-		   evil-easymotion evil-escape evil-lion evil-snipe
-		   exwm-modeline flycheck-haskell flycheck-slime
-		   general helpful js2-mode json-reformat lua-mode
-		   magit marginalia monokai-pro-theme orderless
-		   php-mode prettier python-black python-docstring
-		   python-mode quelpa-use-package racket-mode
-		   rainbow-delimiters rust-mode slime-company
-		   telephone-line typescript-mode undo-tree vertico
-		   vterm web-mode yaml-mode yasnippet)))
+		   consult counsel dracula-theme eglot-booster
+		   evil-collection evil-easymotion evil-escape
+		   evil-lion evil-snipe exwm-modeline fireplace
+		   flycheck-haskell general helpful js2-mode
+		   json-reformat lua-mode magit marginalia
+		   monokai-pro-theme orderless php-mode prettier
+		   python-black python-docstring python-mode
+		   quelpa-use-package racket-mode rainbow-delimiters
+		   rust-mode slime-company telephone-line
+		   typescript-mode undo-tree vertico vterm web-mode
+		   yaml-mode yasnippet)))
 
 ;;(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here

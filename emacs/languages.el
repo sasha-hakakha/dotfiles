@@ -39,9 +39,10 @@
     (eglot-ensure))
   (company-mode 1)
   (flycheck-mode 1)
-  (when (locate-dominating-file default-directory ".clang-format")
+  (when (and buffer-file-name
+             (locate-dominating-file buffer-file-name ".clang-format"))
     (add-hook 'before-save-hook #'clang-format-buffer nil t))
-   (setq c-basic-offset 4       ; indent 4 spaces
+  (setq c-basic-offset 4
         tab-width 4
         indent-tabs-mode nil))
 
