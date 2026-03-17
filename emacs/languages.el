@@ -21,7 +21,12 @@
           (haskell-mode . ("haskell-language-server-wrapper" "--lsp"))
           ((typescript-mode tsx-ts-mode) . ("typescript-language-server" "--stdio"))
           ((js-mode js2-mode javascript-mode) . ("typescript-language-server" "--stdio"))
-          (python-mode . ("pylsp"))))
+          (python-mode . ("pylsp"))
+	  (c++-mode . ("clangd"
+                             "--background-index"
+                             "--clang-tidy"
+                             "--completion-style=detailed"
+                             "--header-insertion=never"))))
   (add-hook 'typescript-mode-hook #'eglot-ensure)
   (add-hook 'tsx-ts-mode-hook #'eglot-ensure))
 
@@ -37,7 +42,7 @@
 (defun my-c-cpp-mode-setup ()
   (when (executable-find "clangd")
     (eglot-ensure))
-  (company-mode 1)
+  ;;(company-mode 1)
   (flycheck-mode 1)
   (when (and buffer-file-name
              (locate-dominating-file buffer-file-name ".clang-format"))
@@ -74,7 +79,7 @@
   :ensure t
   :mode "\\.py\\'"
   :hook ((python-mode . eglot-ensure)
-         (python-mode . company-mode)
+;;         (python-mode . company-mode)
          (python-mode . flycheck-mode)))
 
 ;; rust
@@ -82,7 +87,7 @@
   :ensure t
   :mode "\\.rs\\'"
   :hook ((rust-mode . eglot-ensure)
-         (rust-mode . company-mode)
+ ;;        (rust-mode . company-mode)
          (rust-mode . flycheck-mode))
   :config
   (setq rust-format-on-save t)) ; optional, formats code on save
@@ -126,7 +131,7 @@
   :ensure t
   :mode "\\.js\\'"
   :hook ((python-mode . eglot-ensure)
-         (python-mode . company-mode)
+;;         (python-mode . company-mode)
          (python-mode . flycheck-mode)
          (js2-mode . (lambda ()
                        (prettier-mode 1))))
@@ -139,20 +144,20 @@
   :config
   (eglot-booster-mode 1))
 
-;; common lisp (SLIME)
-(use-package slime
-  :ensure t
-  :mode ("\\.lisp\\'" . lisp-mode)
-  :init
-  (setq inferior-lisp-program "sbcl")
-  :config
-  (setq slime-contribs '(slime-fancy slime-company)))
+;;; ; common lisp (SLIME)
+;; (use-package slime
+;;   :ensure t
+;;   :mode ("\\.lisp\\'" . lisp-mode)
+;;   :init
+;;   (setq inferior-lisp-program "sbcl")
+;;   :config
+;;   (setq slime-contribs '(slime-fancy slime-company)))
 
-(use-package slime-company
-  :ensure t
-  :after (slime company)
-  :config
-  (setq slime-company-completion 'fuzzy))
+;; (use-package slime-company
+;;   :ensure t
+;;   :after (slime company)
+;;   :config
+;;   (setq slime-company-completion 'fuzzy))
 
 (provide 'languages)
 ;;; languages.el ends here

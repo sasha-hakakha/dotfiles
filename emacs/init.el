@@ -236,7 +236,7 @@
      default))
  '(package-selected-packages
    '(anaconda-mode beacon buffer-move ccls clang-format cmake-mode
-		   consult counsel dracula-theme eglot-booster
+		   consult corfu counsel dracula-theme eglot-booster
 		   evil-collection evil-easymotion evil-escape
 		   evil-lion evil-snipe exwm-modeline fireplace
 		   flycheck-haskell general helpful js2-mode

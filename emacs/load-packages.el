@@ -38,6 +38,27 @@
   :config
   (evil-collection-init))
 
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode)
+  :custom
+  (corfu-auto t)               ;; auto popup
+  (corfu-auto-delay 0.1)
+  (corfu-auto-prefix 2)
+  (corfu-cycle t))             ;; wrap navigation
+(setq completion-cycle-threshold 3)
+(setq tab-always-indent 'complete)
+(setq xref-search-program 'ripgrep)
+
+(use-package kind-icon
+  :ensure t
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default)
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
 (use-package monokai-pro-theme
   :demand t)
 
@@ -110,9 +131,9 @@
   :init
   (global-flycheck-mode))
 
-(use-package company
-  :init
-  (global-company-mode))
+;; (use-package company
+;;   :init
+;;   (global-company-mode))
 
 (use-package haskell-mode
   :defer t)

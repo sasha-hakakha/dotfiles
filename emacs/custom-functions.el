@@ -63,5 +63,14 @@
     (message "Copied %d function names to clipboard" (length names))))
 
 (provide 'custom-functions)
-
+;; Function to copy current Flycheck error message
+(defun my/eglot-copy-error-at-point ()
+  "Copy the Eglot diagnostic at point to clipboard."
+  (interactive)
+  (let ((diags (eglot-diagnostics)))
+    (when diags
+      (let ((msg (mapconcat #'eglot--flymake-diagnostic-text diags "\n")))
+        (kill-new msg)
+        (message "Copied: %s" msg)))))
+(global-set-key (kbd "C-c C-e") 'eglot-copy-error-at-point)
 ;;; custom-functions.el ends here
