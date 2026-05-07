@@ -73,4 +73,22 @@
         (kill-new msg)
         (message "Copied: %s" msg)))))
 (global-set-key (kbd "C-c C-e") 'eglot-copy-error-at-point)
+(defun org-all-boxes ()
+  "Count [X] and [ ] checkboxes in the current buffer and print progress."
+  (interactive)
+  (let ((completed 0)
+        (total 0))
+    (save-excursion
+      (goto-char (point-min))
+      ;; matches [ ] or [X]
+      (while (re-search-forward "\\[\\( \\|X\\)\\]" nil t)
+        (setq total (1+ total))
+        (when (string= (match-string 1) "X")
+          (setq completed (1+ completed)))))
+    (if (= total 0)
+        (message "No checkboxes found")
+      (message "%d / %d completed (%.1f%%)"
+               completed
+               total
+               (* 100.0 (/ (float completed) total))))))
 ;;; custom-functions.el ends here

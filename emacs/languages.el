@@ -30,6 +30,21 @@
   (add-hook 'typescript-mode-hook #'eglot-ensure)
   (add-hook 'tsx-ts-mode-hook #'eglot-ensure))
 
+;; java
+(use-package java-mode
+  :ensure nil
+  :mode "\\.java\\'"
+  :hook ((java-mode . eglot-ensure)
+         (java-mode . flycheck-mode))
+  :config
+  (setq c-basic-offset 4
+        tab-width 4
+        indent-tabs-mode nil))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(java-mode . ("jdtls"))))
+
 ;; C/C++
 (use-package clang-format
   :ensure t)
@@ -83,15 +98,23 @@
          (python-mode . flycheck-mode)))
 
 ;; rust
+(use-package flycheck-rust
+  :ensure t
+  :hook (flycheck-mode . flycheck-rust-setup))
+
 (use-package rust-mode
   :ensure t
   :mode "\\.rs\\'"
   :hook ((rust-mode . eglot-ensure)
- ;;        (rust-mode . company-mode)
          (rust-mode . flycheck-mode))
   :config
-  (setq rust-format-on-save t)) ; optional, formats code on save
-
+  (setq rust-format-on-save t)
+  (setq rust-rustfmt-switches '("--edition" "2021"))
+  (advice-add 'rust-format-buffer :around
+              (lambda (orig-fun &rest args)
+                (let ((display-buffer-alist
+                       '(("\\*rustfmt\\*" (display-buffer-no-window)))))
+                  (apply orig-fun args)))))
 ;; typescript
 (use-package yasnippet
   :ensure t

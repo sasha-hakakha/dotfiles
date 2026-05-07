@@ -234,19 +234,7 @@
      "78e6be576f4a526d212d5f9a8798e5706990216e9be10174e3f3b015b8662e27"
      "fb83a50c80de36f23aea5919e50e1bccd565ca5bb646af95729dc8c5f926cbf3"
      default))
- '(package-selected-packages
-   '(anaconda-mode beacon buffer-move ccls clang-format cmake-mode
-		   consult corfu counsel dracula-theme eglot-booster
-		   evil-collection evil-easymotion evil-escape
-		   evil-lion evil-snipe exwm-modeline fireplace
-		   flycheck-haskell general helpful js2-mode
-		   json-reformat lua-mode magit marginalia
-		   monokai-pro-theme orderless php-mode prettier
-		   python-black python-docstring python-mode
-		   quelpa-use-package racket-mode rainbow-delimiters
-		   rust-mode slime-company telephone-line
-		   typescript-mode undo-tree vertico vterm web-mode
-		   yaml-mode yasnippet)))
+ '(package-selected-packages nil))
 
 ;;(add-to-list 'exwm-manage-configurations '((equal exwm-class-name "Slack") managed t))
 ;;; init.el ends here
